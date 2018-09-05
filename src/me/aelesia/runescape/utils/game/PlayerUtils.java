@@ -57,7 +57,7 @@ public class PlayerUtils {
 	}
 	
 	public static boolean isFishing() {
-		if (Players.getLocal().getAnimationId() == Animation.FISHING) {
+		if (Animation.FISHING.contains(Players.getLocal().getAnimationId())) {
 			return true;
 		}
 		return false;
@@ -98,5 +98,9 @@ public class PlayerUtils {
 			return true;
 		}
 		return false;
+	}
+	
+	public static String name() {
+		return Players.getLocal().getName();
 	}
 }

@@ -5,7 +5,7 @@ import com.runemate.game.api.hybrid.location.Coordinate;
 import com.runemate.game.api.script.Execution;
 
 import me.aelesia.runescape.actions.LocationActions;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 
 public abstract class TravelTask extends BaseTask {

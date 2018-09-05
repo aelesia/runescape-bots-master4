@@ -4,7 +4,7 @@ import com.runemate.game.api.hybrid.entities.Player;
 import com.runemate.game.api.hybrid.region.Players;
 
 import me.aelesia.runescape.actions.InventoryActions;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.InventoryUtils;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 

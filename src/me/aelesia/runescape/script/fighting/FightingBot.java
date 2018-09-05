@@ -39,10 +39,10 @@ public class FightingBot extends StateBot {
 	
 	@Override
 	protected void registerTasks() {
-		this.taskMap.put(State.FIGHTING, new FightTask(config.zone.area) {
+		this.taskMap.put(State.FIGHTING, new FightTask(config.zone.area, config.monstersToFight) {
 			@Override
 			public String changeState() {
-				if (killCount() > 4 && LootingTask.getNumLootInVicinity(config.itemsToLoot) >= 4) {
+				if (killCount() > 4 && LootingTask.getNumLootInVicinity(config.itemsToLoot) >= config.minLoot) {
 					return State.LOOTING;
 				}
 				return null;

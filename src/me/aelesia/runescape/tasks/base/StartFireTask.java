@@ -8,7 +8,8 @@ import me.aelesia.runescape.actions.GameActions;
 import me.aelesia.runescape.actions.LocationActions;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.exceptions.ObjectNotFoundException;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.RestManager;
+import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 
@@ -43,7 +44,9 @@ public abstract class StartFireTask extends BaseTask {
 	    			LocationActions.walkHere(LocationUtils.getEmptySpaceAroundMe());
 	    		}
 			} else {
-				GameActions.startFire(logsToBurn);
+				if (GameActions.startFire(logsToBurn)) {
+					RestManager.get(PlayerUtils.name()).rest(State.DISTRACTED);
+				}
 			}
 		}
 	}

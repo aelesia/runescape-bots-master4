@@ -7,7 +7,7 @@ import com.runemate.game.api.hybrid.local.hud.interfaces.SpriteItem;
 
 import me.aelesia.runescape.actions.InventoryActions;
 import me.aelesia.runescape.consts.E;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.general.CommonUtils;
 
 public abstract class BuryTask extends BaseTask {

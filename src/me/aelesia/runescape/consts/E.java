@@ -21,11 +21,13 @@ public class E {
 		public static final String RAW_SALMON = "Raw salmon";
 		public static final String RAW_TROUT = "Raw trout";
 		public static final String RAW_SHRIMPS = "Raw shrimps";
+		public static final String RAW_ANCHOVIES = "Raw anchovies";
 		public static final String RAW_BEEF = "Raw beef";
 		
 		public static final String SALMON = "Salmon";
 		public static final String TROUT = "Trout";
 		public static final String SHRIMPS = "Shrimps";
+		public static final String ANCHOVIES = "Anchovies";
 		public static final String COOKED_MEAT = "Cooked meat";
 		
 		public static final String BURNT_FISH = "Burnt fish";
@@ -45,7 +47,8 @@ public class E {
 		
 		public static final String COPPER_ORE = "Copper ore";
 		public static final String IRON_ORE = "Iron ore";
-		
+
+		public static final String BRONZE_AXE = "Bronze axe";
 		public static final String MITHRIL_AXE = "Mithril axe";
 		public static final String RUNE_AXE = "Rune axe";
 

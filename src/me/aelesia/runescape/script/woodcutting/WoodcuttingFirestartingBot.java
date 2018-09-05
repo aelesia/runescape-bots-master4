@@ -24,9 +24,9 @@ public class WoodcuttingFirestartingBot extends StateBot {
 	
 	@Override
 	protected void initialize() {
-		config.treesToChop = new String[] { E.Object.OAK };
+		config.treesToChop = new String[] { E.Object.TREE };
 		config.logsToBurn = Category.TINDER_LOGS;
-		config.zone = DetermineUtils.findZone(15);
+		config.zone = DetermineUtils.findZone(12);
 		System.out.println(config);
 	}
 	

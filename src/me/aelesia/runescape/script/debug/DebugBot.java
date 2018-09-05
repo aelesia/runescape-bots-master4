@@ -55,8 +55,8 @@ public class DebugBot extends LoopingBot {
 		
 //		System.out.println(Zones.DRAYNOR_OAKS_2_EMPTY.area.contains(Players.getLocal().getPosition()));
 		
-		Coordinate c = Zones.DRAYNOR_OAKS_2_EMPTY.area.getRandomCoordinate();
-		System.out.println(c + ", " + Zones.DRAYNOR_OAKS_2_EMPTY.area.contains(c));
+//		Coordinate c = Zones.DRAYNOR_OAKS_2_EMPTY.area.getRandomCoordinate();
+//		System.out.println(c + ", " + Zones.DRAYNOR_OAKS_2_EMPTY.area.contains(c));
 //		LocationActions.traverseTo(Zones.DRAYNOR_OAKS_2_EMPTY.area.getRandomCoordinate());
 		
 //        WebPath path = Traversal.getDefaultWeb().getPathBuilder().buildTo(new Coordinate(3102, 3284, 0));

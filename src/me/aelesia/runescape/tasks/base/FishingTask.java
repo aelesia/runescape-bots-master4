@@ -6,8 +6,9 @@ import me.aelesia.runescape.actions.GameActions;
 import me.aelesia.runescape.actions.LocationActions;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.exceptions.ObjectNotFoundException;
+import me.aelesia.runescape.script.Rest;
 import me.aelesia.runescape.script.RestManager;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 
@@ -41,7 +42,7 @@ public abstract class FishingTask extends BaseTask {
 			Npc fishingSpotObj = LocationUtils.getNpcNearest(this.fishingSpot);
 			if (fishingSpotObj.isVisible()) {
 				if (GameActions.fish(fishingSpotObj, action)) {
-					RestManager.rest(State.OCCUPIED);
+					RestManager.get(PlayerUtils.name()).rest(State.OCCUPIED);
 				}
     		} else {
     			LocationActions.shortWalkTo(fishingSpotObj);

@@ -3,10 +3,13 @@ package me.aelesia.runescape.script;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.runemate.game.api.hybrid.region.Players;
 import com.runemate.game.api.script.framework.LoopingBot;
+import com.runemate.game.api.script.framework.logger.BotLogger;
 
 import me.aelesia.runescape.exceptions.RunescapeBotException;
 import me.aelesia.runescape.tasks.base.BaseTask;
+import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.exceptions.IllegalStateException;
 
 
@@ -17,17 +20,19 @@ public abstract class StateBot extends LoopingBot {
 	protected String state = null;
 	private String previousState = null;
 	private int iterations = 0;
-	RestManager restManager = new RestManager();
+	Rest restManager = new Rest();
 //	private static boolean stateChanged = false;
 	
     @Override
     public void onStart(String... args){
     	System.out.println("***** Bot Starting *****");
-    	RestManager.initialize();
+    	RestManager.createNew(Players.getLocal().getName());
     	this.initialize();
     	this.registerTasks();
     	this.state = startingState();
     	this.setLoopDelay(50, 100);
+    	
+    	BotLogger logger = new BotLogger(this);
     }
  
     @Override
@@ -62,7 +67,7 @@ public abstract class StateBot extends LoopingBot {
 	    	}
 	    	
 	    	if (iterations==0 && state.equals(startingState())) {
-	    		RestManager.away();
+	    		RestManager.get(PlayerUtils.name()).away();
 	    	}
 	    	
     	} catch (RunescapeBotException e) {

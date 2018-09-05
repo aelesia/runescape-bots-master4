@@ -7,7 +7,7 @@ import com.runemate.game.api.hybrid.region.Banks;
 
 import me.aelesia.runescape.actions.GameActions;
 import me.aelesia.runescape.exceptions.ObjectNotFoundException;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.Rest.State;
 
 public abstract class BankDepositTask extends BaseTask {
 	

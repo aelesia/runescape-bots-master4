@@ -1,14 +1,14 @@
 <manifest>
-    <main-class>me.aelesia.runescape.script.fishing.FishingDisposeBot</main-class>
-    <name>Fishing Disposing</name>
-    <tag-line>Fishing Disposing</tag-line><!--Max of 50 chars-->
-    <description>Fishes then disposes food</description><!--Max of 110 chars-->
+    <main-class>me.aelesia.runescape.script.fighting.FightingChickenBot</main-class>
+    <name>Fighting Chicken</name>
+    <tag-line>Fighting Chicken</tag-line><!--Max of 50 chars-->
+    <description>Fights chickens, loots feathers and bury bones</description><!--Max of 110 chars-->
     <version>1.0.0</version>
     <compatibility>
         <game>OSRS</game>
     </compatibility>
     <categories>
-        <category>FISHING</category>
+        <category>COMBAT</category>
     </categories>
     <!--Required to publish on the bot store-->
     <internal-id>null</internal-id>

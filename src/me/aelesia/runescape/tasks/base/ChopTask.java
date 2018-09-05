@@ -7,8 +7,9 @@ import me.aelesia.runescape.actions.LocationActions;
 import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.exceptions.ObjectNotFoundException;
+import me.aelesia.runescape.script.Rest;
 import me.aelesia.runescape.script.RestManager;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.InventoryUtils;
 import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.PlayerUtils;
@@ -44,7 +45,7 @@ public abstract class ChopTask extends BaseTask {
 				ThreadUtils.sleepFor(1000, 5000);
 			} else if (tree.isVisible() && LocationUtils.isNearby(tree)) {
 				if (GameActions.chop(tree)) {
-					RestManager.rest(State.OCCUPIED);
+					RestManager.get(PlayerUtils.name()).rest(State.OCCUPIED);
 				}
 			} else {
 				LocationActions.shortWalkTo(tree);

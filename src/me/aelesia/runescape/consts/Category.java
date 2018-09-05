@@ -18,15 +18,15 @@ public class Category {
 //	
 	public final static String[] BONES = {E.Item.BONES};
 	
-	public final static String[] RAW_FOOD = {E.Item.RAW_SALMON, E.Item.RAW_TROUT, E.Item.RAW_SHRIMPS};
+	public final static String[] RAW_FOOD = {E.Item.RAW_SALMON, E.Item.RAW_TROUT, E.Item.RAW_SHRIMPS, E.Item.RAW_ANCHOVIES};
 	
-	public final static String[] COOKED_FOOD = {E.Item.SALMON, E.Item.TROUT, E.Item.SHRIMPS};
+	public final static String[] COOKED_FOOD = {E.Item.SALMON, E.Item.TROUT, E.Item.SHRIMPS, E.Item.ANCHOVIES};
 	
 	public final static String[] BURNT_FOOD = {E.Item.BURNT_FISH, E.Item.BURNT_SHRIMP};
 
 	public final static String[] TINDER_LOGS = {E.Item.LOGS, E.Item.OAK_LOGS};
 	
-	public final static String[] AXE = {E.Item.MITHRIL_AXE, E.Item.RUNE_AXE};
+	public final static String[] AXE = {E.Item.BRONZE_AXE, E.Item.MITHRIL_AXE, E.Item.RUNE_AXE};
 	
 	public final static String[] PICKAXE = {E.Item.BRONZE_PICKAXE, E.Item.ADAMANT_PICKAXE, E.Item.BRONZE_PICKAXE};
 	

@@ -56,14 +56,14 @@ public class GameActions {
 	}
 	
 	
-	public static void startFire(String ...logs) {
+	public static boolean startFire(String ...logs) {
 
     	SpriteItem tinderBox = Inventory.getItems(E.Item.TINDERBOX).first();
     	SpriteItem log = Inventory.getItems(logs).last();
-    	startFire(tinderBox, log);
+    	return startFire(tinderBox, log);
 	}
 	
-	private static void startFire(SpriteItem tinderBox, SpriteItem log) {
+	private static boolean startFire(SpriteItem tinderBox, SpriteItem log) {
 
 //    	if (tinderBox == null) {
 //    		throw new ItemNotFoundException("No tinderbox in inventory");
@@ -74,14 +74,15 @@ public class GameActions {
 		System.out.println("[BEGIN] startFire()");
 		
 		InventoryActions.use(tinderBox, log);
-    	Execution.delay(1000);
-    	if (PlayerUtils.isStartingFire()) {
+    	if (Execution.delayUntil(()->PlayerUtils.isStartingFire(), 1000)) {
     		Execution.delayUntil(()->PlayerUtils.isIdle(), 20000, 30000);
     		Execution.delay(1000);
     		System.out.println("[SUCCESS] Logs catch fire");
+    		return true;
     	}
-    	Execution.delayUntil(()->PlayerUtils.isIdle(), 1000);
-    	System.out.println("[END] startFire()");
+    	return false;
+//    	Execution.delayUntil(()->PlayerUtils.isIdle(), 1000);
+//    	System.out.println("[END] startFire()");
     	
 	}
 	

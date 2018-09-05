@@ -3,8 +3,9 @@ package me.aelesia.runescape.tasks.base;
 import com.runemate.game.api.hybrid.entities.GameObject;
 import me.aelesia.runescape.actions.GameActions;
 import me.aelesia.runescape.consts.E;
+import me.aelesia.runescape.script.Rest;
 import me.aelesia.runescape.script.RestManager;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 
@@ -25,7 +26,7 @@ public abstract class CookTask extends BaseTask {
 			GameObject fire = LocationUtils.getGameObjectNearestVisibleAroundMe(1, E.Object.FIRE);
 			if (fire != null) {
 				if (GameActions.cookFood(fire, itemsToCook)) {
-					RestManager.rest(State.DISTRACTED);
+					RestManager.get(PlayerUtils.name()).rest(State.DISTRACTED);
 				}
 			}
 		}

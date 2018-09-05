@@ -1,7 +1,7 @@
 package me.aelesia.runescape.tasks.base;
 
 import me.aelesia.runescape.actions.InventoryActions;
-import me.aelesia.runescape.script.RestManager.State;
+import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.InventoryUtils;
 
 public abstract class DisposeTask extends BaseTask {

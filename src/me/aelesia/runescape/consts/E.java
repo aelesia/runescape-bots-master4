@@ -32,6 +32,8 @@ public class E {
 		
 		public static final String BURNT_FISH = "Burnt fish";
 		public static final String BURNT_SHRIMP = "Burnt shrimp";
+		public static final String BURNT_MEAT = "Burnt meat";
+
 
 		public static final String TINDERBOX = "Tinderbox";
 		public static final String ASHES = "Ashes";

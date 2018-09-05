@@ -1,8 +1,8 @@
 <manifest>
-    <main-class>me.aelesia.runescape.script.fishing.FishingDisposeBot</main-class>
-    <name>Fishing Disposing</name>
-    <tag-line>Fishing Disposing</tag-line><!--Max of 50 chars-->
-    <description>Fishes then disposes food</description><!--Max of 110 chars-->
+    <main-class>bin.me.aelesia.runescape.script.fishing.FishingCookingLumbridgeBot</main-class>
+    <name>Fishing Cooking Lumbridge</name>
+    <tag-line>Fishing Cooking Lumbridge</tag-line><!--Max of 50 chars-->
+    <description></description><!--Max of 110 chars-->
     <version>1.0.0</version>
     <compatibility>
         <game>OSRS</game>

@@ -22,7 +22,10 @@ public class GameActions {
 //	}
 	
 	public static boolean fish(Npc fishingSpot, String action) {
-		fishingSpot.interact(action);
+		if (!fishingSpot.interact(action)) {
+			Logger.fail("Failed to interact with " + fishingSpot.getDefinition().getName());
+			return false;
+		}
 		Logger.action("Interacting with fishing spot");
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
 			Execution.delayUntil(()->!PlayerUtils.isMoving());
@@ -38,7 +41,10 @@ public class GameActions {
 	
 	public static boolean chop(GameObject tree) {
 		
-		tree.interact(E.Action.CHOP_DOWN);
+		if (!tree.interact(E.Action.CHOP_DOWN)) {
+			Logger.fail("Failed to interact with " + tree);
+			return false;
+		}
 		Logger.action("Interacting with " + tree.getDefinition().getName());
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
 			Execution.delayUntil(()->!PlayerUtils.isMoving());

@@ -24,7 +24,7 @@ public class Category {
 	
 	public final static String[] BURNT_FOOD = {E.Item.BURNT_FISH, E.Item.BURNT_SHRIMP, E.Item.BURNT_MEAT};
 
-	public final static String[] TINDER_LOGS = {E.Item.LOGS, E.Item.OAK_LOGS};
+	public final static String[] TINDER_LOGS = {E.Item.LOGS, E.Item.OAK_LOGS, E.Item.WILLOW_LOGS};
 	
 	public final static String[] AXE = {E.Item.BRONZE_AXE, E.Item.MITHRIL_AXE, E.Item.RUNE_AXE};
 	

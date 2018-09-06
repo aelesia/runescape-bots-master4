@@ -10,6 +10,7 @@ public class E {
 		public static final String TREE = "Tree";
 		public static final String DEAD_TREE = "Dead tree";
 		public static final String OAK = "Oak";
+		public static final String WILLOW = "Willow";
 		
 		public static final String BOULDER = "Boulder";
 		public static final String TREE_STUMP = "Tree stump";
@@ -34,11 +35,12 @@ public class E {
 		public static final String BURNT_SHRIMP = "Burnt shrimp";
 		public static final String BURNT_MEAT = "Burnt meat";
 
-
 		public static final String TINDERBOX = "Tinderbox";
 		public static final String ASHES = "Ashes";
 		public static final String LOGS = "Logs";
 		public static final String OAK_LOGS = "Oak logs";
+		public static final String WILLOW_LOGS = "Willow logs";
+
 
 		public static final String COINS = "Coins";
 		public static final String BONES = "Bones";

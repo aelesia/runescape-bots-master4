@@ -1,14 +1,14 @@
 <manifest>
-    <main-class>me.aelesia.runescape.script.debug.TestBot</main-class>
-    <name>Tester</name>
-    <tag-line>For testing functions</tag-line><!--Max of 50 chars-->
-    <description>For testing functions</description><!--Max of 110 chars-->
+    <main-class>me.aelesia.runescape.script.woodcutting.WoodcuttingBurningBot</main-class>
+    <name>Woodcutting Burning Bot</name>
+    <tag-line>Woodcutting Burning Bot</tag-line><!--Max of 50 chars-->
+    <description></description><!--Max of 110 chars-->
     <version>1.0.0</version>
     <compatibility>
         <game>OSRS</game>
     </compatibility>
     <categories>
-        <category>Developer</category>
+        <category>WOODCUTTING</category>
     </categories>
     <!--Required to publish on the bot store-->
     <internal-id>null</internal-id>

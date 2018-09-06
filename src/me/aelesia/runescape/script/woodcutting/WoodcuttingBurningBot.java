@@ -3,16 +3,19 @@ package me.aelesia.runescape.script.woodcutting;
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
 import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.consts.E;
+import me.aelesia.runescape.consts.Zones;
 import me.aelesia.runescape.script.Config;
 import me.aelesia.runescape.script.StateBot;
 import me.aelesia.runescape.tasks.base.ChopTask;
 import me.aelesia.runescape.tasks.base.DisposeTask;
 import me.aelesia.runescape.tasks.base.StartFireTask;
 import me.aelesia.runescape.utils.game.InventoryUtils;
+import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.Logger;
+import me.aelesia.runescape.utils.game.Zone;
 import me.aelesia.runescape.utils.general.CommonUtils;
 
-public abstract class WoodcuttingBurningBase extends StateBot {
+public class WoodcuttingBurningBot extends StateBot {
 
 	Config config = new Config();
 	
@@ -20,6 +23,14 @@ public abstract class WoodcuttingBurningBase extends StateBot {
 		static final String CHOPPING = "CHOPPING";
 		static final String DISPOSING = "DISPOSING";
 		static final String FIRESTARTING = "FIRESTARTING";
+	}
+
+
+	@Override
+	protected void initialize() {
+		config.treesToChop = new String[] { E.Object.WILLOW };
+		config.logsToBurn = Category.TINDER_LOGS;
+		config.zone = new Zone("Willow Area", LocationUtils.getSurroundingArea(10));
 	}
 	
 	@Override

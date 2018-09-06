@@ -25,12 +25,12 @@ public class Rest {
 	public final int MIN_TIME_BLOCK = 1;
 	public final int MAX_TIME_BLOCK = 3;
 	
-	public final int MIN_DISTRACTED = 10;
-	public final int MAX_DISTRACTED = 20;
-	public final int MIN_OCCUPIED = 0;
-	public final int MAX_OCCUPIED = 0;
-	public final int MIN_AWAY = 5;
-	public final int MAX_AWAY = 10;
+	public final int MIN_DISTRACTED = 20;
+	public final int MAX_DISTRACTED = 30;
+	public final int MIN_OCCUPIED = 10;
+	public final int MAX_OCCUPIED = 15;
+	public final int MIN_AWAY = 10;
+	public final int MAX_AWAY = 15;
 	
 	int bottingDuration;
 	int occupiedTime;

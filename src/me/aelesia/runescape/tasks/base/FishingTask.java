@@ -11,6 +11,7 @@ import me.aelesia.runescape.script.RestManager;
 import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.PlayerUtils;
+import me.aelesia.runescape.utils.general.ThreadUtils;
 
 public abstract class FishingTask extends BaseTask {
 
@@ -35,7 +36,10 @@ public abstract class FishingTask extends BaseTask {
     		}
     	}
 		if (LocationUtils.getNpcNearest(this.fishingSpot) == null) {
-			throw new ObjectNotFoundException(this.fishingSpot);
+			ThreadUtils.sleepFor(5000);
+			if (LocationUtils.getNpcNearest(this.fishingSpot) == null) {
+				throw new ObjectNotFoundException(this.fishingSpot);
+			}
 		}
 	}
 	

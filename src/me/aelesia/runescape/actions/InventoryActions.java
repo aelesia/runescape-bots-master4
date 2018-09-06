@@ -106,7 +106,6 @@ public class InventoryActions {
 			return true;
 		}
 		return false;
-		
 	}
 	
 //	public static void buryBones() {

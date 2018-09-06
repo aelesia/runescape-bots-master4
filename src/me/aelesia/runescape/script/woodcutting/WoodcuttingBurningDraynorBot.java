@@ -4,7 +4,7 @@ import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.consts.Zones;
 
-public class WoodcuttingBurningDraynorBot extends WoodcuttingBurningBase {
+public class WoodcuttingBurningDraynorBot extends WoodcuttingBurningBot {
 
 	@Override
 	protected void initialize() {

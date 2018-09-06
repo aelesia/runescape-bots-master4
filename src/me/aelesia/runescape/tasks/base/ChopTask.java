@@ -33,9 +33,14 @@ public abstract class ChopTask extends BaseTask {
 	public void validate() {
 		if (!InventoryUtils.contains(Category.AXE) && !InventoryUtils.equipped(Category.AXE)) {
 			throw new ObjectNotFoundException("No axe found");
-		} else if (LocationUtils.getGameObjectNearestWithin(this.area, 
+		} 
+		else if (LocationUtils.getGameObjectNearestWithin(this.area, 
 				CommonUtils.mergeStringArray(E.Object.TREE_STUMP, this.treesToChop)) == null) {
-			throw new ObjectNotFoundException("No trees found");
+			ThreadUtils.sleepFor(5000);
+			if (LocationUtils.getGameObjectNearestWithin(this.area, 
+				CommonUtils.mergeStringArray(E.Object.TREE_STUMP, this.treesToChop)) == null ) {
+				throw new ObjectNotFoundException("No trees found");
+			}
 		}
 	}
 	

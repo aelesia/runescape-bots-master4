@@ -18,6 +18,10 @@ public class Logger {
 	
 	public static void success(String msg) {
 		println("[SUCCESS] " + msg);
+	}	
+	
+	public static void fail(String msg) {
+		println("[FAIL] " + msg);
 	}
 	
 	public static void action(String msg) {

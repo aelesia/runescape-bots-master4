@@ -19,8 +19,8 @@ public class Rest {
 		public static final String AWAY = "AWAY";
 	}
 	
-	public final int MIN_DURATION_MINS = 45;
-	public final int MAX_DURATION_MINS = 60;
+//	public final int MIN_DURATION_MINS = 45;
+//	public final int MAX_DURATION_MINS = 60;
 	
 	public final int MIN_TIME_BLOCK = 1;
 	public final int MAX_TIME_BLOCK = 3;
@@ -29,8 +29,8 @@ public class Rest {
 	public final int MAX_DISTRACTED = 30;
 	public final int MIN_OCCUPIED = 10;
 	public final int MAX_OCCUPIED = 15;
-	public final int MIN_AWAY = 10;
-	public final int MAX_AWAY = 15;
+	public final int MIN_AWAY = 5;
+	public final int MAX_AWAY = 10;
 	
 	int bottingDuration;
 	int occupiedTime;
@@ -51,8 +51,9 @@ public class Rest {
 	boolean willAway = false;
 	int awayFor;
 	
-	public Rest() {
-		bottingDuration = RandomUtils.randomInt(MIN_DURATION_MINS*60, MAX_DURATION_MINS*60);
+	public Rest(int bottingDuration) {
+		this.bottingDuration = bottingDuration;
+//		bottingDuration = RandomUtils.randomInt(MIN_DURATION_MINS*60, MAX_DURATION_MINS*60);
 
 		occupiedTime = (int) (RandomUtils.randomInt(MIN_OCCUPIED, MAX_OCCUPIED) / 100.0 * bottingDuration);
 		distractedTime = (int) (RandomUtils.randomInt(MIN_DISTRACTED, MAX_DISTRACTED) / 100.0 * bottingDuration);

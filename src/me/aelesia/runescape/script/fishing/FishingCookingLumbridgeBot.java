@@ -1,5 +1,7 @@
 package me.aelesia.runescape.script.fishing;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.scene.Node;
 import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.consts.Zones;

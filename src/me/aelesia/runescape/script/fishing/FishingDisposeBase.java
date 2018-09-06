@@ -1,6 +1,7 @@
 package me.aelesia.runescape.script.fishing;
 
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
+import com.sun.jna.Platform;
 
 import me.aelesia.runescape.script.StateBot;
 import me.aelesia.runescape.tasks.base.FishingTask;
@@ -16,6 +17,7 @@ public abstract class FishingDisposeBase extends StateBot {
 	
 	@Override
 	protected void registerTasks() {
+
     	this.taskMap.put(State.FISHING, new FishingTask(config.fishingSpot, config.fishingAction) {
 			@Override public String changeState() {
 				if (Inventory.isFull()) {

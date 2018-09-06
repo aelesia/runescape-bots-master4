@@ -1,6 +1,7 @@
 package me.aelesia.runescape.utils.game;
 
 import com.runemate.game.api.hybrid.entities.Npc;
+import com.runemate.game.api.hybrid.entities.Player;
 import com.runemate.game.api.hybrid.region.Npcs;
 import com.runemate.game.api.hybrid.region.Players;
 
@@ -101,6 +102,10 @@ public class PlayerUtils {
 	}
 	
 	public static String name() {
-		return Players.getLocal().getName();
+		Player local = Players.getLocal();
+		if (local!=null) {
+			return local.getName();
+		}
+		return "";
 	}
 }

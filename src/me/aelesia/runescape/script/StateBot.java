@@ -1,34 +1,53 @@
 package me.aelesia.runescape.script;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.stage.*;
+
+import com.runemate.game.api.client.embeddable.EmbeddableUI;
 import com.runemate.game.api.hybrid.region.Players;
+import com.runemate.game.api.hybrid.util.Resources;
 import com.runemate.game.api.script.framework.LoopingBot;
 import me.aelesia.runescape.exceptions.RunescapeBotException;
 import me.aelesia.runescape.tasks.base.BaseTask;
 import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
+import me.aelesia.runescape.utils.general.ThreadUtils;
 import me.aelesia.runescape.exceptions.IllegalStateException;
 
 
-public abstract class StateBot extends LoopingBot {
+public abstract class StateBot extends LoopingBot implements EmbeddableUI {
 	
 	protected Map<String, BaseTask> taskMap = new HashMap<String, BaseTask>();
 	
 	protected String state = null;
 	private String previousState = null;
 	private int iterations = 0;
-	Rest restManager = new Rest();
+	Rest rest;
 	protected Config config = new Config();
 //	private static boolean stateChanged = false;
 	
+	public StateBot() {
+    	setEmbeddableUI(this);
+	}
+	
     @Override
     public void onStart(String... args){
+    	Logger.info("***** Bot setup *****");
+    	while (!config.ready) {
+    		ThreadUtils.sleepFor(100);
+    	}
     	Logger.info("***** Bot Starting *****");
-    	RestManager.createNew(Players.getLocal().getName());
-    	this.initialize();
     	Logger.config(this.config.toString());
+    	RestManager.createNew(Players.getLocal().getName(), config.bottingDuration);
+    	this.initialize();
     	this.registerTasks();
     	this.state = startingState();
     	this.setLoopDelay(50, 100);
@@ -87,6 +106,19 @@ public abstract class StateBot extends LoopingBot {
 		iterations = 2;
 	}
 
+	@Override
+	public ObjectProperty<? extends Node> botInterfaceProperty() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setController(new TutorialController(config));
+//			Node node = loader.load(this.getClass().getResourceAsStream("me/aelesia/runescape/script/Tutorial.fxml"));
+            Node node = loader.load(Resources.getAsStream("me/aelesia/runescape/script/Tutorial.fxml"));
+            return new SimpleObjectProperty<>(node);
+        } catch (IOException e) {
+        	throw new RuntimeException(e);
+        }            
+	}
+	
     protected abstract void registerTasks();
 
     protected abstract String startingState();

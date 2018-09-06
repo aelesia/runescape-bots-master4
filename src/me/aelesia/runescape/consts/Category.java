@@ -22,7 +22,7 @@ public class Category {
 	
 	public final static String[] COOKED_FOOD = {E.Item.SALMON, E.Item.TROUT, E.Item.SHRIMPS, E.Item.ANCHOVIES, E.Item.COOKED_MEAT};
 	
-	public final static String[] BURNT_FOOD = {E.Item.BURNT_FISH, E.Item.BURNT_SHRIMP, E.Item.BURNT_MEAT};
+	public final static String[] BURNT_FOOD = {E.Item.BURNT_FISH, E.Item.BURNT_SHRIMP, E.Item.BURNT_MEAT };
 
 	public final static String[] TINDER_LOGS = {E.Item.LOGS, E.Item.OAK_LOGS, E.Item.WILLOW_LOGS};
 	

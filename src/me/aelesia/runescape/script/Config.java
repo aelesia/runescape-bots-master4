@@ -26,9 +26,13 @@ public class Config {
 	public int minLoot;
 	public int maxLoot;
 	public int kills;
+	
+	public int bottingDuration;
+	public boolean ready = false;
 
 	public String toString() {
 		String str = "______________________________\n";
+		str+="bottingDuration: " + bottingDuration;
 		if (zone!=null) {
 			str+= "zone: " + zone.name + "\n";
 		} if (bank!=null) {

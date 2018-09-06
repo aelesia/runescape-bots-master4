@@ -19,6 +19,6 @@
     <tags>
     </tags>
     <resources>
-        <resource>path/to/file.png</resource>
+        <resource>me/aelesia/runescape/script/Tutorial.fxml</resource>
     </resources>
 </manifest>

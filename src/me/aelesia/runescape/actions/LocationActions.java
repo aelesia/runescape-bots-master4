@@ -47,7 +47,7 @@ public class LocationActions {
 	}
 	
 	public static void traverseTo(Coordinate c) {
-    	if (LocationUtils.isNearby(c)) {
+    	if (LocationUtils.distanceTo(c) < 3) {
     		LocationActions.walkHere(c);
     	} else {
 			Path p = Traversal.getDefaultWeb().getPathBuilder().buildTo(c);

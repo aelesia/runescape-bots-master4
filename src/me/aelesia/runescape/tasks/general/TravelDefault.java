@@ -5,11 +5,16 @@ import com.runemate.game.api.hybrid.region.Players;
 
 import me.aelesia.runescape.tasks.base.TravelTask;
 import me.aelesia.runescape.utils.game.Logger;
+import me.aelesia.runescape.utils.game.Zone;
 
 public abstract class TravelDefault extends TravelTask {
 
 	public TravelDefault(Area area) {
 		super(area);
+	}
+	
+	public TravelDefault(Zone zone) {
+		super(zone);
 	}
 
 	@Override

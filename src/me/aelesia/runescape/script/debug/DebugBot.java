@@ -1,26 +1,9 @@
 package me.aelesia.runescape.script.debug;
 
-import com.runemate.game.api.hybrid.entities.GameObject;
 import com.runemate.game.api.hybrid.entities.GroundItem;
-import com.runemate.game.api.hybrid.local.hud.interfaces.Equipment;
-import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
-import com.runemate.game.api.hybrid.local.hud.interfaces.SpriteItem;
 import com.runemate.game.api.hybrid.location.Coordinate;
-import com.runemate.game.api.hybrid.location.navigation.Path;
-import com.runemate.game.api.hybrid.location.navigation.Traversal;
-import com.runemate.game.api.hybrid.location.navigation.web.WebPath;
 import com.runemate.game.api.hybrid.region.Players;
-import com.runemate.game.api.script.Execution;
 import com.runemate.game.api.script.framework.LoopingBot;
-
-import me.aelesia.runescape.actions.InventoryActions;
-import me.aelesia.runescape.actions.LocationActions;
-import me.aelesia.runescape.consts.E;
-import me.aelesia.runescape.consts.Zones;
-import me.aelesia.runescape.exceptions.OutOfBoundsException;
-import me.aelesia.runescape.utils.game.LocationUtils;
-import me.aelesia.runescape.utils.game.PlayerUtils;
-import me.aelesia.runescape.utils.general.ThreadUtils;
 
 public class DebugBot extends LoopingBot {
 
@@ -63,8 +46,8 @@ public class DebugBot extends LoopingBot {
 //			InventoryActions.interact(E.Action.BURY, bones);
 //			System.out.println("Loop");
 //		}
-		System.out.println("equipment: " + Equipment.getItems(E.Item.RUNE_AXE));
-		System.out.println("equipment: " + Equipment.getItems().asList());
+//		System.out.println("equipment: " + Equipment.getItems(E.Item.RUNE_AXE));
+//		System.out.println("equipment: " + Equipment.getItems().asList());
 //		Coordinate c = Zones.DRAYNOR_OAKS.area.getRandomCoordinate();
 //		System.out.println(c);
 //		Path p = Traversal.getDefaultWeb().getPathBuilder().buildTo(c);

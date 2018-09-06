@@ -1,8 +1,6 @@
 package me.aelesia.runescape.tasks.base;
 
 
-import java.util.Arrays;
-
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
 import com.runemate.game.api.hybrid.location.Area;
 

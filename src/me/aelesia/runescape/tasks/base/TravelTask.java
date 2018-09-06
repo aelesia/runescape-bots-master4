@@ -1,24 +1,18 @@
 package me.aelesia.runescape.tasks.base;
 
-import java.util.List;
-
-import com.runemate.game.api.hybrid.entities.GameObject;
-import com.runemate.game.api.hybrid.entities.GameObject.Type;
 import com.runemate.game.api.hybrid.location.Area;
 import com.runemate.game.api.hybrid.location.Coordinate;
-import com.runemate.game.api.hybrid.region.GameObjects;
 import com.runemate.game.api.script.Execution;
 
 import me.aelesia.runescape.actions.LocationActions;
 import me.aelesia.runescape.exceptions.OutOfBoundsException;
-import me.aelesia.runescape.script.Rest.State;
-import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
-import me.aelesia.runescape.utils.general.RandomUtils;
+import me.aelesia.runescape.utils.game.Zone;
 
 public abstract class TravelTask extends BaseTask {
 
+	protected Zone zone;
 	protected Area area;
 	Coordinate c;
 	int retryCount;
@@ -27,10 +21,19 @@ public abstract class TravelTask extends BaseTask {
 		this.area = area;
 	}
 	
+	public TravelTask(Zone zone) {
+		this.zone = zone;
+		this.area = zone.area;
+	}
+	
 	@Override
 	public void initialize() {
 		c = area.getRandomCoordinate();
-		Logger.init("Coordinate: " + c);
+		if (this.zone!=null) {
+			Logger.init("Travelling to " + this.zone.name);
+		} else {
+			Logger.init("Coordinate: " + c);	
+		}
 		retryCount = 0;
 	}
 	

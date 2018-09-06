@@ -6,14 +6,11 @@ import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.script.Config;
 import me.aelesia.runescape.script.StateBot;
-import me.aelesia.runescape.tasks.base.BuryTask;
 import me.aelesia.runescape.tasks.base.FightTask;
 import me.aelesia.runescape.tasks.base.LootingTask;
 import me.aelesia.runescape.tasks.general.BuryDefault;
 import me.aelesia.runescape.tasks.multi.CookFireDisposeChop;
 import me.aelesia.runescape.utils.game.DetermineUtils;
-import me.aelesia.runescape.utils.game.InventoryUtils;
-import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.general.CommonUtils;
 

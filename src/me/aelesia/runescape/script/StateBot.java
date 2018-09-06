@@ -5,8 +5,6 @@ import java.util.Map;
 
 import com.runemate.game.api.hybrid.region.Players;
 import com.runemate.game.api.script.framework.LoopingBot;
-import com.runemate.game.api.script.framework.logger.BotLogger;
-
 import me.aelesia.runescape.exceptions.RunescapeBotException;
 import me.aelesia.runescape.tasks.base.BaseTask;
 import me.aelesia.runescape.utils.game.Logger;

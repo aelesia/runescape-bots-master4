@@ -1,13 +1,10 @@
 package me.aelesia.runescape.tasks.base;
 
-import java.util.Arrays;
-
 import com.runemate.game.api.hybrid.entities.Npc;
 import com.runemate.game.api.hybrid.location.Area;
 
 import me.aelesia.runescape.actions.GameActions;
 import me.aelesia.runescape.actions.LocationActions;
-import me.aelesia.runescape.script.Rest;
 import me.aelesia.runescape.script.RestManager;
 import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.tasks.base.BaseTask;

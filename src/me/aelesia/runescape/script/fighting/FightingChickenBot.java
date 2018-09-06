@@ -2,7 +2,6 @@ package me.aelesia.runescape.script.fighting;
 
 import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.consts.E;
-import me.aelesia.runescape.consts.Zones;
 import me.aelesia.runescape.utils.game.DetermineUtils;
 
 public class FightingChickenBot extends FightingBase {

@@ -1,15 +1,9 @@
 package me.aelesia.runescape.tasks.base;
 
-import com.runemate.game.api.hybrid.entities.details.Locatable;
 import com.runemate.game.api.hybrid.location.Area;
 import com.runemate.game.api.hybrid.location.Coordinate;
-import com.runemate.game.api.hybrid.location.navigation.Path;
-import com.runemate.game.api.hybrid.location.navigation.basic.BresenhamPath;
-import com.runemate.game.api.hybrid.region.GameObjects;
-
 import me.aelesia.runescape.actions.LocationActions;
 import me.aelesia.runescape.exceptions.ObjectNotFoundException;
-import me.aelesia.runescape.exceptions.OutOfBoundsException;
 import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.utils.general.CommonUtils;

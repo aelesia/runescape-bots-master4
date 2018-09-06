@@ -3,7 +3,6 @@ package me.aelesia.runescape.tasks.multi;
 import java.util.HashMap;
 import java.util.Map;
 
-import me.aelesia.runescape.script.Rest;
 import me.aelesia.runescape.tasks.base.BaseTask;
 
 public abstract class MultiTask extends BaseTask {

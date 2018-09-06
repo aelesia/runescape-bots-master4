@@ -19,8 +19,8 @@ public class Rest {
 		public static final String AWAY = "AWAY";
 	}
 	
-	public final int MIN_DURATION_MINS = 80;
-	public final int MAX_DURATION_MINS = 100;
+	public final int MIN_DURATION_MINS = 45;
+	public final int MAX_DURATION_MINS = 60;
 	
 	public final int MIN_TIME_BLOCK = 1;
 	public final int MAX_TIME_BLOCK = 3;
@@ -30,7 +30,7 @@ public class Rest {
 	public final int MIN_OCCUPIED = 0;
 	public final int MAX_OCCUPIED = 0;
 	public final int MIN_AWAY = 5;
-	public final int MAX_AWAY = 5;
+	public final int MAX_AWAY = 10;
 	
 	int bottingDuration;
 	int occupiedTime;
@@ -137,7 +137,7 @@ public class Rest {
 			willAway = true;
 			awayFor = (timeList.get(0) - currentTime()) * 1000;
 			if (awayFor < 0) {
-				awayFor = RandomUtils.randomInt(1*60, 2*60) * 1000;
+				awayFor = RandomUtils.randomInt(1*60, 4*60) * 1000;
 			}
 		}
 		if (State.AWAY.equals(state) && willAway) {

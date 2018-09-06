@@ -1,6 +1,5 @@
 package me.aelesia.runescape.tasks.base;
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
@@ -9,7 +8,6 @@ import com.runemate.game.api.hybrid.local.hud.interfaces.SpriteItem;
 import me.aelesia.runescape.actions.InventoryActions;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.exceptions.IllegalArgumentException;
-import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.general.CommonUtils;
 

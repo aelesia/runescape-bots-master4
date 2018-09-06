@@ -1,15 +1,11 @@
 package me.aelesia.runescape.tasks.base;
 
-import java.util.Arrays;
-
 import com.runemate.game.api.hybrid.entities.GroundItem;
 
 import me.aelesia.runescape.actions.GameActions;
 import me.aelesia.runescape.exceptions.IllegalArgumentException;
-import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.tasks.base.BaseTask;
 import me.aelesia.runescape.utils.game.LocationUtils;
-import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.utils.general.CommonUtils;
 

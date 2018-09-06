@@ -1,22 +1,11 @@
 package me.aelesia.runescape.script.woodcutting;
 
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
-import me.aelesia.runescape.consts.Category;
-import me.aelesia.runescape.consts.E;
-import me.aelesia.runescape.consts.Zones;
-import me.aelesia.runescape.script.Config;
 import me.aelesia.runescape.script.StateBot;
 import me.aelesia.runescape.tasks.base.ChopTask;
-import me.aelesia.runescape.tasks.base.DisposeTask;
-import me.aelesia.runescape.tasks.base.StartFireTask;
-import me.aelesia.runescape.tasks.base.TravelTask;
 import me.aelesia.runescape.tasks.general.BankDepositDefault;
 import me.aelesia.runescape.tasks.general.TravelDefault;
-import me.aelesia.runescape.utils.game.DetermineUtils;
-import me.aelesia.runescape.utils.game.InventoryUtils;
 import me.aelesia.runescape.utils.game.Logger;
-import me.aelesia.runescape.utils.game.Zone;
-import me.aelesia.runescape.utils.general.CommonUtils;
 
 public abstract class WoodcuttingBankingBase extends StateBot {
 	
@@ -27,17 +16,9 @@ public abstract class WoodcuttingBankingBase extends StateBot {
 		static final String TRAVEL_CHOP = "TRAVEL_CHOP";
 	}
 	
-//	@Override
-//	protected void initialize() {
-//		config.treesToChop = new String[] { E.Object.OAK };
-//		config.zone = Zones.DRAYNOR_OAKS_2;
-//		config.bank = Zones.BANK_DRAYNOR;
-//		config.itemsToDeposit = new String[] { E.Item.OAK_LOGS };
-//		System.out.println(config);
-//	}
-	
 	@Override
 	protected void registerTasks() {
+		
     	this.taskMap.put(State.CHOPPING, new ChopTask(config.zone.area, config.treesToChop) {			
 			@Override
 			public String changeState() {

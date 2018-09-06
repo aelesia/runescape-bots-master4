@@ -1,11 +1,9 @@
 package me.aelesia.runescape.script.fishing;
 
-import com.runemate.game.api.hybrid.location.Area;
-
 import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.consts.Zones;
-import me.aelesia.runescape.utils.game.DetermineUtils;
+import me.aelesia.runescape.utils.game.Zone;
 import me.aelesia.runescape.utils.general.CommonUtils;
 
 public class FishingCookingLumbridgeBot extends FishingCookingBase {

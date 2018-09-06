@@ -1,20 +1,11 @@
 package me.aelesia.runescape.script.mining;
 
-import java.awt.Color;
-
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
 
-import me.aelesia.runescape.consts.Category;
-import me.aelesia.runescape.consts.E;
-import me.aelesia.runescape.script.Config;
 import me.aelesia.runescape.script.StateBot;
-import me.aelesia.runescape.tasks.base.FishingTask;
 import me.aelesia.runescape.tasks.base.MiningTask;
 import me.aelesia.runescape.tasks.general.DisposeDefault;
-import me.aelesia.runescape.utils.game.DetermineUtils;
 import me.aelesia.runescape.utils.game.Logger;
-import me.aelesia.runescape.utils.game.Zone;
-import me.aelesia.runescape.utils.general.CommonUtils;
 
 public abstract class MiningDisposeBase extends StateBot {
 	

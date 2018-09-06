@@ -1,8 +1,6 @@
 package me.aelesia.runescape.tasks.base;
 
 import java.awt.Color;
-import java.util.Arrays;
-
 import com.runemate.game.api.hybrid.entities.GameObject;
 import com.runemate.game.api.hybrid.location.Area;
 

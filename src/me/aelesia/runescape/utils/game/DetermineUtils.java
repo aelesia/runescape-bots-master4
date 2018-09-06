@@ -1,10 +1,8 @@
 package me.aelesia.runescape.utils.game;
 
-import java.util.List;
 import com.runemate.game.api.hybrid.entities.Npc;
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
 import com.runemate.game.api.hybrid.location.Coordinate;
-import com.runemate.game.api.hybrid.region.Npcs;
 import com.runemate.game.api.hybrid.region.Players;
 
 import me.aelesia.runescape.consts.E;

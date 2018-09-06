@@ -1,8 +1,6 @@
 package me.aelesia.runescape.tasks.multi;
 
 import me.aelesia.runescape.consts.E;
-import me.aelesia.runescape.script.Rest;
-import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.tasks.base.CookTask;
 import me.aelesia.runescape.tasks.base.StartFireTask;
 import me.aelesia.runescape.utils.game.InventoryUtils;

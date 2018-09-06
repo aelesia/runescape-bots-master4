@@ -1,9 +1,6 @@
 package me.aelesia.runescape.tasks.base;
 
-import java.util.Arrays;
-
 import com.runemate.game.api.hybrid.entities.GameObject;
-import com.runemate.game.api.hybrid.local.hud.interfaces.Equipment;
 import com.runemate.game.api.hybrid.location.Area;
 import me.aelesia.runescape.actions.GameActions;
 import me.aelesia.runescape.actions.LocationActions;
@@ -11,7 +8,6 @@ import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.exceptions.IllegalArgumentException;
 import me.aelesia.runescape.exceptions.ObjectNotFoundException;
-import me.aelesia.runescape.script.Rest;
 import me.aelesia.runescape.script.RestManager;
 import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.InventoryUtils;

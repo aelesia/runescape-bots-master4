@@ -1,12 +1,8 @@
 package me.aelesia.runescape.tasks.base;
 
-import java.util.Arrays;
-
 import me.aelesia.runescape.actions.InventoryActions;
 import me.aelesia.runescape.exceptions.IllegalArgumentException;
-import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.InventoryUtils;
-import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.general.CommonUtils;
 
 public abstract class DisposeTask extends BaseTask {

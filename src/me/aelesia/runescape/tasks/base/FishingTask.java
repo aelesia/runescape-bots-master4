@@ -7,14 +7,10 @@ import me.aelesia.runescape.actions.LocationActions;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.exceptions.IllegalArgumentException;
 import me.aelesia.runescape.exceptions.ObjectNotFoundException;
-import me.aelesia.runescape.script.Config;
-import me.aelesia.runescape.script.Rest;
 import me.aelesia.runescape.script.RestManager;
 import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.LocationUtils;
-import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
-import me.aelesia.runescape.utils.general.CommonUtils;
 
 public abstract class FishingTask extends BaseTask {
 

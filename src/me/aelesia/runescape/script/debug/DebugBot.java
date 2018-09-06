@@ -5,6 +5,9 @@ import com.runemate.game.api.hybrid.location.Coordinate;
 import com.runemate.game.api.hybrid.region.Players;
 import com.runemate.game.api.script.framework.LoopingBot;
 
+import me.aelesia.runescape.consts.Zones;
+import me.aelesia.runescape.utils.game.LocationUtils;
+
 public class DebugBot extends LoopingBot {
 
 	private Coordinate coordinate;
@@ -40,6 +43,8 @@ public class DebugBot extends LoopingBot {
 			System.out.println("Animation: " + animationId);
 			lastAnimationId = animationId;
 		}
+		
+		System.out.println(LocationUtils.isWithin(Zones.DRAYNOR_OAKS_2.area));
 		
 //		while (Inventory.contains(E.Item.BONES)) {
 //			SpriteItem bones = Inventory.getItems(E.Item.BONES).first();

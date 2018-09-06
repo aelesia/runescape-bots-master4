@@ -14,6 +14,7 @@ import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.utils.general.CommonUtils;
 
+@Deprecated
 public abstract class ShortTravelTask extends BaseTask {
 
 	protected Area area;

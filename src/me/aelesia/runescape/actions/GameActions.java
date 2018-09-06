@@ -12,6 +12,7 @@ import com.runemate.game.api.script.Execution;
 
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.utils.game.GameUtils;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 
 public class GameActions {
@@ -22,13 +23,13 @@ public class GameActions {
 	
 	public static boolean fish(Npc fishingSpot, String action) {
 		fishingSpot.interact(action);
-		System.out.println("[ACTION] Interacting with fishing spot");
+		Logger.action("Interacting with fishing spot");
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
 			Execution.delayUntil(()->!PlayerUtils.isMoving());
-			System.out.println("[SUCCESS] Arrived at fishing spot");
+			Logger.success("Arrived at fishing spot");
 		}
 		if (Execution.delayUntil(()->PlayerUtils.isFishing(), 3000)) {
-			System.out.println("[SUCCESS] Fishing");
+			Logger.success("Fishing");
 			Execution.delayUntil(()->!PlayerUtils.isFishing());
 			return true;
 		}
@@ -38,13 +39,13 @@ public class GameActions {
 	public static boolean chop(GameObject tree) {
 		
 		tree.interact(E.Action.CHOP_DOWN);
-		System.out.println("[ACTION] Interacting with " + tree.getDefinition().getName());
+		Logger.action("Interacting with " + tree.getDefinition().getName());
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
 			Execution.delayUntil(()->!PlayerUtils.isMoving());
-			System.out.println("[SUCCESS] Arrived at " + tree);
+			Logger.success("Arrived at " + tree);
 		}
 		if (Execution.delayUntil(()->PlayerUtils.isChopping(), 1000)) {
-			System.out.println("[SUCCESS] Chopping " + tree.getDefinition().getName());
+			Logger.success("Chopping " + tree.getDefinition().getName());
 			Execution.delayUntil(()->!PlayerUtils.isChopping());
 			return true;
 		}
@@ -71,13 +72,12 @@ public class GameActions {
 //    		throw new ItemNotFoundException("No logs in inventory");
 //    	}
 		
-		System.out.println("[BEGIN] startFire()");
 		
 		InventoryActions.use(tinderBox, log);
     	if (Execution.delayUntil(()->PlayerUtils.isStartingFire(), 1000)) {
     		Execution.delayUntil(()->PlayerUtils.isIdle(), 20000, 30000);
     		Execution.delay(1000);
-    		System.out.println("[SUCCESS] Logs catch fire");
+    		Logger.success("Logs catch fire");
     		return true;
     	}
     	return false;
@@ -88,13 +88,13 @@ public class GameActions {
 	
 	public static boolean mine(GameObject rock) {
 		rock.interact(E.Action.MINE);
-		System.out.println("[ACTION] Interacting with rock");
+		Logger.action("Interacting with rock");
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
 			Execution.delayUntil(()->!PlayerUtils.isMoving());
-			System.out.println("[SUCCESS] Arrived at rock");
+			Logger.success("Arrived at rock");
 		}
 		if (Execution.delayUntil(()->PlayerUtils.isMining(), 1000)) {
-			System.out.println("[SUCCESS] Mining rock");
+			Logger.success("Mining rock");
 			Execution.delayUntil(()->!PlayerUtils.isMining());
 			return true;
 		}
@@ -109,7 +109,6 @@ public class GameActions {
 //			throw new LocatableNotFoundException(E.Object.FIRE);
 //		}
 		
-		System.out.println("[BEGIN] cookFood()");
 		
     	InventoryActions.use(food, fire);
     	Execution.delay(1000, 1500);
@@ -117,7 +116,7 @@ public class GameActions {
 		Execution.delay(1000, 1500);
 		
 		if (PlayerUtils.isCooking()) {
-			System.out.println("[SUCCESS] Cooking " + food);
+			Logger.success("Cooking " + food);
 			Execution.delayUntil(()->PlayerUtils.isIdleFor(2000), 60000);
 			return true;
 		}
@@ -152,24 +151,24 @@ public class GameActions {
 	
 	public static void cancel() {
 		Players.getLocal().getPosition().interact(E.Action.WALK_HERE);
-		System.out.println("[ACTION] Walking to self");
+		Logger.action("Walking to self");
 		Execution.delay(1000);
 		if (Execution.delayUntil(()->PlayerUtils.isIdle(), 2000)) {
-			System.out.println("[SUCCESS] Action cancelled");
+			Logger.success("Action cancelled");
 		}
 	}
 	
 	public static boolean attack(Npc target) {
 		target.interact(E.Action.ATTACK);
-		System.out.println("[ACTION] Interacting with " + target);
+		Logger.action("Interacting with " + target);
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
 			Execution.delayUntil(()->!PlayerUtils.isMoving());
-			System.out.println("[SUCCESS] Arrived at " + target);
+			Logger.success("Arrived at " + target);
 		}
 		if (Execution.delayUntil(()->PlayerUtils.isInCombat2(), 1000)) {
-			System.out.println("[SUCCESS] Attacking " + target);
+			Logger.success("Attacking " + target);
 			Execution.delayUntil(()->GameUtils.isDead(target), 60000);
-			System.out.println("[SUCCESS] Killed Target");
+			Logger.success("Killed Target");
 			return true;
 		}
 		return false;
@@ -178,13 +177,13 @@ public class GameActions {
 	public static boolean loot(GroundItem item) {
 		int quantity = Inventory.getQuantity();
 		item.interact(E.Action.TAKE);
-		System.out.println("[ACTION] Looting " + item.getDefinition().getName());			
+		Logger.action("Looting " + item.getDefinition().getName());			
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
 			Execution.delayUntil(()->!PlayerUtils.isMoving());
-			System.out.println("[SUCCESS] Arrived at " + item);
+			Logger.success("Arrived at " + item);
 		}
 		if (Inventory.getQuantity() > quantity) {
-			System.out.println("[SUCCESS] Picked up: " + item);
+			Logger.success("Picked up: " + item);
 			return true;
 		}
 		return false;
@@ -192,16 +191,16 @@ public class GameActions {
 	
 	public static void lootAsync(GroundItem item) {
 		item.interact(E.Action.TAKE);
-		System.out.println("[ACTION] Looting " + item.getDefinition().getName());
+		Logger.action("Looting " + item.getDefinition().getName());
 		Execution.delayUntil(()->PlayerUtils.isMoving(), 1000);
 	}
 	
 	public static void openBank() {
 		if (!Bank.isOpen()) {
-			System.out.println("[ACTION] Opening Bank");
+			Logger.action("Opening Bank");
 			Bank.open();
 			if (Execution.delayUntil(()->Bank.isOpen(), 5000)) {
-				System.out.println("[SUCCESS] Bank is open");
+				Logger.success("Bank is open");
 				Execution.delay(1000);
 			}
 		}
@@ -210,18 +209,18 @@ public class GameActions {
 	public static void closeBank() {
 		if (Bank.isOpen()) {
 			Bank.close();
-			System.out.println("[ACTION] Closing Bank");
+			Logger.action("Closing Bank");
 			if (Execution.delayUntil(()->!Bank.isOpen(), 1000)) {
-				System.out.println("[SUCCESS] Bank is closed");
+				Logger.success("Bank is closed");
 			}
 		}
 	}
 	
 	public static void depositAll(SpriteItem item) {
-		System.out.println("[ACTION] Depositing all " + item);
+		Logger.action("Depositing all " + item);
 		Bank.deposit(item, 0);
 		if (Execution.delayUntil(()->!item.isValid(), 2000)) {
-			System.out.println("[SUCCESS] Item deposited");
+			Logger.success("Item deposited");
 		}
 	}
 	

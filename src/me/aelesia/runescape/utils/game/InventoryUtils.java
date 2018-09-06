@@ -1,10 +1,15 @@
 package me.aelesia.runescape.utils.game;
 
+import com.runemate.game.api.hybrid.local.hud.interfaces.Equipment;
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
 import me.aelesia.runescape.consts.Category;
 
 
 public class InventoryUtils {
+	
+	public static boolean equipped(String ...items) {
+		return !Equipment.getItems(items).isEmpty();
+	}
 	
 	public static boolean contains(String ...items) {
 		return !Inventory.getItems(items).isEmpty();

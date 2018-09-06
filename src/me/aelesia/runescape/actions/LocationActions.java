@@ -14,6 +14,7 @@ import com.runemate.game.api.script.Execution;
 import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.exceptions.OutOfBoundsException;
 import me.aelesia.runescape.utils.game.LocationUtils;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 
 public class LocationActions {
@@ -32,20 +33,20 @@ public class LocationActions {
         if (p == null) {
         	throw new OutOfBoundsException("[ERROR] No valid path");
         }
-        System.out.println("[ACTION] Walking to destination");
+        Logger.action("Walking to destination");
         p.step();
         if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
         	Execution.delayUntil(()->!PlayerUtils.isMoving());
-        	System.out.println("[COMPLETE] Arrived at destination");
+        	Logger.success("Arrived at destination");
 		}
 	}
 	
 	public static void walkHere(Coordinate c) {
 		c.interact(E.Action.WALK_HERE);
-        System.out.println("[ACTION] Walking to destination");
+        Logger.action("Walking to destination");
         Execution.delay(1000);
         Execution.delayUntil(()->PlayerUtils.isIdle(), 10000);
-        System.out.println("[COMPLETE] Arrived at destination");
+        Logger.success("Arrived at destination");
 	}
 	
 	public static void traverseTo(Coordinate c) {
@@ -54,10 +55,9 @@ public class LocationActions {
     	} else {
 			Path p = Traversal.getDefaultWeb().getPathBuilder().buildTo(c);
 	        if (p == null) {
-	        		System.out.println("[WARNING] No path found. Current pos: " + Players.getLocal().getPosition() + ", Target: " + c);
-	        		throw new OutOfBoundsException("[ERROR] No valid path");
+        		throw new OutOfBoundsException("[ERROR] No valid path. Current pos: " + Players.getLocal().getPosition() + ", Target: " + c);
 	        }
-	        System.out.println("[ACTION] Heading to destination");
+	        Logger.action("Heading to destination");
 	        p.step();
 		}
 	}

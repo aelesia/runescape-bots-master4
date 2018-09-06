@@ -9,6 +9,7 @@ import com.runemate.game.api.script.framework.logger.BotLogger;
 
 import me.aelesia.runescape.exceptions.RunescapeBotException;
 import me.aelesia.runescape.tasks.base.BaseTask;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.exceptions.IllegalStateException;
 
@@ -21,23 +22,23 @@ public abstract class StateBot extends LoopingBot {
 	private String previousState = null;
 	private int iterations = 0;
 	Rest restManager = new Rest();
+	protected Config config = new Config();
 //	private static boolean stateChanged = false;
 	
     @Override
     public void onStart(String... args){
-    	System.out.println("***** Bot Starting *****");
+    	Logger.info("***** Bot Starting *****");
     	RestManager.createNew(Players.getLocal().getName());
     	this.initialize();
+    	Logger.config(this.config.toString());
     	this.registerTasks();
     	this.state = startingState();
     	this.setLoopDelay(50, 100);
-    	
-    	BotLogger logger = new BotLogger(this);
     }
  
     @Override
     public void onStop(){
-    	System.out.println("***** Bot Stopped *****");
+    	Logger.info("***** Bot Stopped *****");
     }
     
     @Override
@@ -77,7 +78,7 @@ public abstract class StateBot extends LoopingBot {
     }
 	
 	private void setState(String newState) {
-		System.out.println("[STATE] " + state + "->" + newState);
+		Logger.stateChange(state + "->" + newState);
 		previousState = state;
 		state = newState;
 		iterations = 0;

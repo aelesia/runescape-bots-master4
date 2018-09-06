@@ -3,6 +3,7 @@ package me.aelesia.runescape.tasks.general;
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
 
 import me.aelesia.runescape.tasks.base.FishingTask;
+import me.aelesia.runescape.utils.game.Logger;
 
 abstract class FishDefault extends FishingTask {
 
@@ -13,7 +14,7 @@ abstract class FishDefault extends FishingTask {
 	@Override
 	public String changeState() {
 		if (Inventory.isFull()) {
-			System.out.println("[STATE] Inventory is full");
+			Logger.state("Inventory is full");
 			return stateIfInventoryIsFull();
 		}
 		return null;

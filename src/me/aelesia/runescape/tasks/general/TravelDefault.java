@@ -4,6 +4,7 @@ import com.runemate.game.api.hybrid.location.Area;
 import com.runemate.game.api.hybrid.region.Players;
 
 import me.aelesia.runescape.tasks.base.TravelTask;
+import me.aelesia.runescape.utils.game.Logger;
 
 public abstract class TravelDefault extends TravelTask {
 
@@ -14,7 +15,7 @@ public abstract class TravelDefault extends TravelTask {
 	@Override
 	public String changeState() {
 		if (this.area.contains(Players.getLocal().getPosition())) {
-			System.out.println("[STATE] Arrived at area");
+			Logger.state("Arrived at area");
 			return stateIfArrived();
 		}
 		return null;

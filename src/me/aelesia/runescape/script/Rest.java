@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.aelesia.runescape.exceptions.OutOfTimeException;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.general.RandomUtils;
 import me.aelesia.runescape.utils.general.ThreadUtils;
 
@@ -120,15 +121,13 @@ public class Rest {
 		if (timeList.isEmpty()) {
 			throw new OutOfTimeException("Bot finished running for " + bottingDuration/60 + " minutes");
 		}
-		while (currentTime() > timeList.get(0)) {
-			if (timeList.isEmpty()) {
-				throw new OutOfTimeException("Bot finished running for " + bottingDuration/60 + " minutes");
-			}
+		while (timeList.size()>0 && currentTime() > timeList.get(0)) {
+
 			timeList.remove(0);
 			stateList.remove(0);
-			if (!stateList.isEmpty()) {
-				System.out.println("[ALERT STATE] " + stateList.get(0));
-			}
+		}
+		if (timeList.isEmpty()) {
+			throw new OutOfTimeException("Bot finished running for " + bottingDuration/60 + " minutes");
 		}
 //		System.out.println("Current time: " + currentTime());
 		String state = stateList.get(0);
@@ -143,24 +142,24 @@ public class Rest {
 		}
 		if (State.AWAY.equals(state) && willAway) {
 			int sleepTime = RandomUtils.randomInt(100, 500);
-			System.out.println("[WILL AWAY] Pause: " + sleepTime/1000.0);
+			Logger.pause("Will away: " + sleepTime/1000.0);
 			ThreadUtils.sleepFor(sleepTime);
 		} else if (State.ACTIVE.equals(state) || State.ACTIVE.equals(maxRestState)) {			
 //			ThreadUtils.sleepFor(0, 500);
 			int sleepTime = RandomUtils.randomInt(100, 500);
-			System.out.println("[ACTIVE] Pause: " + sleepTime/1000.0);
+			Logger.pause("Active: " + sleepTime/1000.0);
 			ThreadUtils.sleepFor(sleepTime);
 			
 		} else if (State.DISTRACTED.equals(state) || State.DISTRACTED.equals(maxRestState)) {
 //			ThreadUtils.sleepFor(0, 5000);
 			int sleepTime = RandomUtils.randomInt(200, 7000);
-			System.out.println("[DISTRACTED] Pause: " + sleepTime/1000.0);
+			Logger.pause("Distracted for: " + sleepTime/1000.0);
 			ThreadUtils.sleepFor(sleepTime);
 			
 		} else if (State.OCCUPIED.equals(state) || State.OCCUPIED.equals(maxRestState)) {
 //			ThreadUtils.sleepFor(0, 30000);
 			int sleepTime = RandomUtils.randomInt(1000, 20000);
-			System.out.println("[OCCUPIED] Pause: " + sleepTime/1000.0);
+			Logger.pause("Occupied for: " + sleepTime/1000.0);
 			ThreadUtils.sleepFor(sleepTime);
 		}
 	}
@@ -178,7 +177,7 @@ public class Rest {
 //		}
 //		String state = stateList.get(0);
 		if (willAway) {
-			System.out.println("[AWAY] Pause: " + awayFor/1000.0);
+			Logger.pause("Away for: " + awayFor/1000.0);
 			ThreadUtils.sleepFor(awayFor);
 			willAway = false;
 		}

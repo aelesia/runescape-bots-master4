@@ -8,6 +8,7 @@ import me.aelesia.runescape.tasks.base.ChopTask;
 import me.aelesia.runescape.tasks.base.DisposeTask;
 import me.aelesia.runescape.utils.game.InventoryUtils;
 import me.aelesia.runescape.utils.game.LocationUtils;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.general.RandomUtils;
 
 public abstract class CookFireDisposeChop extends MultiTask {
@@ -31,11 +32,11 @@ public abstract class CookFireDisposeChop extends MultiTask {
 			@Override
 			public String changeState() {
 				if (!InventoryUtils.contains(this.itemsToDispose)) {
-					System.out.println("[STATE] No more items to dispose of");
+					Logger.state("No more items to dispose of");
 					if (Inventory.getQuantity(Category.TINDER_LOGS) >= 2) {
 						return END;
 					} else {
-						System.out.println("[STATE] Not enough logs left");
+						Logger.state("Not enough logs left");
 						return State.CHOPPING;
 					}
 				}
@@ -54,10 +55,10 @@ public abstract class CookFireDisposeChop extends MultiTask {
 			@Override
 			public String changeState() {
 				if (Inventory.getItems(logsToBurn).size() >= numLogsToAcquire) {
-					System.out.println("[STATE] Acquired enough logs: " + Inventory.getItems(Category.TINDER_LOGS).size() + " / " + numLogsToAcquire) ;
+					Logger.state("Acquired enough logs: " + Inventory.getItems(Category.TINDER_LOGS).size() + " / " + numLogsToAcquire) ;
 					return END;
 				} else if (Inventory.getItems(logsToBurn).size() >=2 && LocationUtils.getGameObjectNearestWithin(this.area, treesToChop) == null) {
-					System.out.println("[STATE] No trees left to chop in area but acquired sufficient logs");
+					Logger.state("No trees left to chop in area but acquired sufficient logs");
 					return END;
 				}
 				return null;

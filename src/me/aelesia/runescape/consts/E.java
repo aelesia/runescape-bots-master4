@@ -81,6 +81,7 @@ public class E {
 		public static final String ATTACK = "Attack";
 		public static final String BURY = "Bury";;
 		public static final String MINE = "Mine";
+		public static final String EAT = "Eat";
 	}
 	
 	public static class Ore {

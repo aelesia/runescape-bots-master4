@@ -12,6 +12,7 @@ import me.aelesia.runescape.script.RestManager;
 import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.tasks.base.BaseTask;
 import me.aelesia.runescape.utils.game.LocationUtils;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.utils.general.ThreadUtils;
 
@@ -47,7 +48,7 @@ public abstract class FightTask extends BaseTask {
 			}
 //			}
 			if (target==null) {
-				System.out.println("[PAUSE] Unable to find " + target + ". Waiting.") ;
+				Logger.pause("Unable to find " + target + ". Waiting.");
 				ThreadUtils.sleepFor(1000, 5000);
 			} else {
 				if (!target.isVisible()) {
@@ -55,7 +56,7 @@ public abstract class FightTask extends BaseTask {
 				}
 				if (GameActions.attack(target)) {
 					killCount++;
-					System.out.println("killCount: " + killCount);
+					Logger.info("killCount: " + killCount);
 					RestManager.get(PlayerUtils.name()).rest(State.OCCUPIED);
 				}
 			}

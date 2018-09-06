@@ -11,6 +11,7 @@ import com.runemate.game.api.hybrid.local.hud.interfaces.SpriteItem;
 import com.runemate.game.api.script.Execution;
 
 import me.aelesia.runescape.consts.Hotkey;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.general.CommonUtils;
 
 public class InventoryActions {
@@ -18,7 +19,7 @@ public class InventoryActions {
 	public static void open() {
 		if (!InterfaceWindows.getInventory().isOpen()) {
 			Keyboard.typeKey(Hotkey.INVENTORY);
-			System.out.println("[ACTION] Opening Inventory");
+			Logger.action("Opening Inventory");
 			Execution.delayUntil(()->InterfaceWindows.getInventory().isOpen(), 1000);
 		}
 	}
@@ -26,7 +27,7 @@ public class InventoryActions {
 	public static void close() {
 		if (InterfaceWindows.getInventory().isOpen()) {
 			Keyboard.typeKey(Hotkey.INVENTORY);
-			System.out.println("[ACTION] Closing Inventory");
+			Logger.action("Closing Inventory");
 			Execution.delayUntil(()->!InterfaceWindows.getInventory().isOpen(), 1000);
 		}
 	}
@@ -34,7 +35,7 @@ public class InventoryActions {
 	public static void checkIfSelected() {
 		if (Inventory.getSelectedItem() != null) {
 			Inventory.getSelectedItem().click();
-			System.out.println("[ACTION] Deselecting item");
+			Logger.action("Deselecting item");
 			Execution.delayUntil(()->Inventory.getSelectedItem()==null, 1000);
 		}
 	}
@@ -49,7 +50,7 @@ public class InventoryActions {
     	
     	item1.interact("Use");
     	item2.interact("Use", item1.getDefinition().getName() + " -> " + item2.getDefinition().getName());
-    	System.out.println("[ACTION] Using " + item1.getDefinition().getName() + " with " + item2.getDefinition().getName());
+    	Logger.action("Using " + item1.getDefinition().getName() + " with " + item2.getDefinition().getName());
 	}
 	
 	public static void use(SpriteItem item, GameObject object) {
@@ -58,12 +59,12 @@ public class InventoryActions {
     	
     	item.interact("Use");
     	object.interact("Use", item.getDefinition().getName() + " -> " + object.getDefinition().getName());
-    	System.out.println("[ACTION] Using " + item.getDefinition().getName() + " with " + object.getDefinition().getName());
+    	Logger.action("Using " + item.getDefinition().getName() + " with " + object.getDefinition().getName());
 	}
 	
 	@Deprecated
 	public static void disposeAll(String ...items) {
-		System.out.println("[START] disposeAll()");
+//		System.out.println("[START] disposeAll()");
 		List<String> disposeList = Arrays.asList(items);
 		List<SpriteItem> inventory = Inventory.getItems(items).asList();
 		inventory = CommonUtils.sortInventoryByIndex(inventory);
@@ -71,12 +72,12 @@ public class InventoryActions {
 		for (SpriteItem item : inventory) {
 			if (disposeList.contains(item.getDefinition().getName())) {
 				item.click();
-				System.out.println("[ACTION] Drop " + item);
+				Logger.action("Drop " + item);
 			}
 		}
 		Keyboard.releaseKey(16);
 		Execution.delay(1000);
-		System.out.println("[END] disposeAll()");
+//		System.out.println("[END] disposeAll()");
 	}
 	
 	@Deprecated
@@ -86,7 +87,7 @@ public class InventoryActions {
 	    	InventoryActions.checkIfSelected();
 			
 			int initialSize = Inventory.getQuantity(itemName);
-			System.out.println("[ACTION] " + action + item);
+			Logger.action(action + item);
 			item.interact(action);
 			Execution.delay(1000);
 			Execution.delayUntil(()->(Inventory.getQuantity(itemName)!=initialSize), 2000);
@@ -98,10 +99,10 @@ public class InventoryActions {
     	InventoryActions.checkIfSelected();
     	
 		int initialSize = Inventory.getQuantity(item.getDefinition().getName());
-		System.out.println("[ACTION] " + action + item);
+		Logger.action(action + item);
 		item.interact(action);
 		if (Execution.delayUntil(()->(Inventory.getQuantity(item.getDefinition().getName())!=initialSize), 2000)) {
-			System.out.println("[SUCCESS] " + action + item);
+			Logger.success(action + item);
 			return true;
 		}
 		return false;

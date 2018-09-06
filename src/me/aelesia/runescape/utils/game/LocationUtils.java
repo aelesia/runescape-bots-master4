@@ -1,6 +1,7 @@
 package me.aelesia.runescape.utils.game;
 
 import java.awt.Color;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -114,17 +115,19 @@ public class LocationUtils {
 		}).results().nearest();
 	}
 	
-	public static GameObject getMineNearestWithin(Area area, Color ore) {
+	public static GameObject getMineNearestWithin(Area area, Color ...ore) {
 		return GameObjects.newQuery().names(E.Object.ROCKS).actions(E.Action.MINE).within(area).filter(target -> {
+			List<Color> oreList = Arrays.asList(ore);
 			return (!target.getDefinition().getColorSubstitutions().isEmpty()
-					&& target.getDefinition().getColorSubstitutions().get(E.Ore.EMPTY).equals(ore));
+					&& oreList.contains(target.getDefinition().getColorSubstitutions().get(E.Ore.EMPTY)));
 		}).results().nearest();
 	}
 	
 	public static GameObject getMineNearestAroundMe(int radius, Color ore) {
 		return GameObjects.newQuery().names(E.Object.ROCKS).actions(E.Action.MINE).within(LocationUtils.getSurroundingArea(radius)).filter(target -> {
+			List<Color> oreList = Arrays.asList(ore);
 			return (!target.getDefinition().getColorSubstitutions().isEmpty()
-					&& target.getDefinition().getColorSubstitutions().get(E.Ore.EMPTY).equals(ore));
+					&& oreList.contains(target.getDefinition().getColorSubstitutions().get(E.Ore.EMPTY)));
 		}).results().nearest();
 	}
 	

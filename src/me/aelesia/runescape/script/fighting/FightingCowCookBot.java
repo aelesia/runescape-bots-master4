@@ -14,6 +14,7 @@ import me.aelesia.runescape.tasks.multi.CookFireDisposeChop;
 import me.aelesia.runescape.utils.game.DetermineUtils;
 import me.aelesia.runescape.utils.game.InventoryUtils;
 import me.aelesia.runescape.utils.game.LocationUtils;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.general.CommonUtils;
 
 public class FightingCowCookBot extends StateBot {
@@ -40,7 +41,7 @@ public class FightingCowCookBot extends StateBot {
 		
 		config.minLoot = 6;
 		config.maxLoot = config.minLoot * 2;
-		System.out.println(config);
+		config.kills = 4;
 	}
 	
 	@Override
@@ -48,7 +49,7 @@ public class FightingCowCookBot extends StateBot {
 		this.taskMap.put(State.FIGHTING, new FightTask(config.zone.area, config.monstersToFight) {
 			@Override
 			public String changeState() {
-				if (killCount() > 4 && LootingTask.getNumLootInVicinity(config.itemsToLoot) >= config.minLoot) {
+				if (killCount() >= config.kills && LootingTask.getNumLootInVicinity(config.itemsToLoot) >= config.minLoot) {
 					return State.LOOTING;
 				}
 				return null;
@@ -59,16 +60,16 @@ public class FightingCowCookBot extends StateBot {
 			@Override
 			public String changeState() {
 				if (Inventory.isFull()) {
-					System.out.println("[STATE] Inventory too many items");
+					Logger.state("Inventory too many items");
 					return State.BURYING;
 					
 				} else if (this.itemsPickedUp >= config.maxLoot) {
-					System.out.println("[STATE] Picked up " + this.itemsPickedUp + " items");
+					Logger.state("Picked up " + this.itemsPickedUp + " items");
 					return State.FIGHTING;
 					
 				} else if (LootingTask.getAdjacentLoot(this.itemsToLoot) == null) {
 					if (Inventory.getEmptySlots() <= config.minLoot) {
-						System.out.println("[STATE] Inventory too many items");
+						Logger.state("Inventory too many items");
 						return State.BURYING;
 					} else {
 						return State.FIGHTING;
@@ -82,7 +83,7 @@ public class FightingCowCookBot extends StateBot {
 			@Override
 			public String stateIfNoMoreBones() {
 				if (Inventory.getEmptySlots() <= config.minLoot) {
-					System.out.println("[STATE] Inventory too many items");
+					Logger.state("Inventory too many items");
 					return State.COOKING_FIRE_DISPOSE_CHOP;
 				} else {
 					return State.FIGHTING;

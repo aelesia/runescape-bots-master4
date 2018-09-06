@@ -2,6 +2,7 @@ package me.aelesia.runescape.tasks.general;
 
 import me.aelesia.runescape.tasks.base.DisposeTask;
 import me.aelesia.runescape.utils.game.InventoryUtils;
+import me.aelesia.runescape.utils.game.Logger;
 
 public abstract class DisposeDefault extends DisposeTask {
 
@@ -12,7 +13,7 @@ public abstract class DisposeDefault extends DisposeTask {
 	@Override
 	public String changeState() {
 		if (!InventoryUtils.contains(this.itemsToDispose)) {
-			System.out.println("[STATE] No more items to dispose of");
+			Logger.state("No more items to dispose of");
 			return stateIfNoMoreItemsToDispose();
 		}
 		return null;

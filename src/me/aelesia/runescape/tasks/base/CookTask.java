@@ -1,19 +1,27 @@
 package me.aelesia.runescape.tasks.base;
 
+import java.util.Arrays;
+
 import com.runemate.game.api.hybrid.entities.GameObject;
 import me.aelesia.runescape.actions.GameActions;
 import me.aelesia.runescape.consts.E;
+import me.aelesia.runescape.exceptions.IllegalArgumentException;
 import me.aelesia.runescape.script.Rest;
 import me.aelesia.runescape.script.RestManager;
 import me.aelesia.runescape.script.Rest.State;
 import me.aelesia.runescape.utils.game.LocationUtils;
+import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
+import me.aelesia.runescape.utils.general.CommonUtils;
 
 public abstract class CookTask extends BaseTask {
 
 	protected String[] itemsToCook;
 	
 	public CookTask(String ...itemsToCook) {
+		if (CommonUtils.isEmpty(itemsToCook)) {
+			throw new IllegalArgumentException("");
+		}
 		this.itemsToCook = itemsToCook;
 	}
 

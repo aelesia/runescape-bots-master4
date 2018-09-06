@@ -23,6 +23,13 @@ public class CommonUtils {
 		return false;
 	}
 	
+	public static boolean isEmpty(String[] array) {
+		if (array == null || array.length == 0) {
+			return true;
+		}
+		return false;
+	}
+	
 	public static List<SpriteItem> sortInventoryByIndex(List<SpriteItem> list) {
 		List<SpriteItem> sortedList = new ArrayList<SpriteItem>(list);
 		
@@ -42,7 +49,6 @@ public class CommonUtils {
 	public static String[] mergeArrays(String[] ...arrays) {
 		List<String> stringList = new ArrayList<String>();
 		for (int i=0; i<arrays.length; i++) {
-			System.out.println(i+":"+arrays[i]);
 			stringList.addAll(Arrays.asList(arrays[i]));
 		}
 		return stringList.toArray(new String[stringList.size()]);

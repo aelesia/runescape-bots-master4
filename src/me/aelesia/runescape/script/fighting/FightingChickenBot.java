@@ -5,7 +5,7 @@ import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.consts.Zones;
 import me.aelesia.runescape.utils.game.DetermineUtils;
 
-public class FightingChickenBot extends FightingBot {
+public class FightingChickenBot extends FightingBase {
 	@Override
 	protected void initialize() {
 		config.monstersToFight = new String[] { E.NPC.CHICKEN };
@@ -15,7 +15,7 @@ public class FightingChickenBot extends FightingBot {
 		
 		config.minLoot = 5;
 		config.maxLoot = config.minLoot * 2;
-		System.out.println(config);
+		config.kills = 4;
 	}
 	
 }

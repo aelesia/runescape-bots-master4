@@ -1,0 +1,24 @@
+<manifest>
+    <main-class>me.aelesia.runescape.script.fighting.FightingCowCookBot</main-class>
+    <name>Fighting Cow Cook</name>
+    <tag-line>Fighting Cow Cook</tag-line><!--Max of 50 chars-->
+    <description></description><!--Max of 110 chars-->
+    <version>1.0.0</version>
+    <compatibility>
+        <game>OSRS</game>
+    </compatibility>
+    <categories>
+        <category>COMBAT</category>
+    </categories>
+    <!--Required to publish on the bot store-->
+    <internal-id>null</internal-id>
+    <!--The rest are optional-->
+    <open-source>false</open-source>
+    <hidden>true</hidden> <!--If you need to hide it from the bot store for maintenance-->
+    <access>private</access>
+    <tags>
+    </tags>
+    <resources>
+        <resource>path/to/file.png</resource>
+    </resources>
+</manifest>

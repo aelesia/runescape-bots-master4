@@ -1,5 +1,5 @@
 <manifest>
-    <main-class>bin.me.aelesia.runescape.script.fishing.FishingCookingLumbridgeBot</main-class>
+    <main-class>me.aelesia.runescape.script.fishing.FishingCookingLumbridgeBot</main-class>
     <name>Fishing Cooking Lumbridge</name>
     <tag-line>Fishing Cooking Lumbridge</tag-line><!--Max of 50 chars-->
     <description></description><!--Max of 110 chars-->

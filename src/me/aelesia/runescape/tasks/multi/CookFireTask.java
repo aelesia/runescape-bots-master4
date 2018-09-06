@@ -7,6 +7,7 @@ import me.aelesia.runescape.tasks.base.CookTask;
 import me.aelesia.runescape.tasks.base.StartFireTask;
 import me.aelesia.runescape.utils.game.InventoryUtils;
 import me.aelesia.runescape.utils.game.LocationUtils;
+import me.aelesia.runescape.utils.game.Logger;
 
 public abstract class CookFireTask extends MultiTask {
 	
@@ -21,11 +22,11 @@ public abstract class CookFireTask extends MultiTask {
 			@Override
 			public String changeState() {
 				if (!InventoryUtils.contains(itemsToCook)) {
-					System.out.println("[STATE] No more items to cook");
+					Logger.state("No more items to cook");
 					return State.END;
 				}
 				else if (LocationUtils.getGameObjectNearestVisibleAroundMe(2, E.Object.FIRE) == null) {
-					System.out.println("[STATE] No fire found near me");
+					Logger.state("No fire found near me");
 					return State.FIRE_STARTING;
 				}
 				return null;
@@ -36,10 +37,10 @@ public abstract class CookFireTask extends MultiTask {
 			@Override
 			public String changeState() {				
 				if (LocationUtils.getGameObjectNearestVisibleAroundMe(2, E.Object.FIRE) != null) {
-					System.out.println("[STATE] Fire found");
+					Logger.state("Fire found");
 					return State.COOKING;
 				} else if (!InventoryUtils.contains(logsToBurn)) {
-					System.out.println("[STATE] No logs in inventory");
+					Logger.state("No logs in inventory");
 					return State.END;
 				}
 				return null;

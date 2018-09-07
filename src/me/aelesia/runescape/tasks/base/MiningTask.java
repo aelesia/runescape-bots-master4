@@ -32,21 +32,21 @@ public abstract class MiningTask extends BaseTask {
 
 	@Override
 	public void validate() {
-		if (!InventoryUtils.contains(Category.PICKAXE)) {
-			throw new ObjectNotFoundException("No pick found");
+		if (!InventoryUtils.contains(Category.PICKAXE) && !InventoryUtils.equipped(Category.PICKAXE)) {
+			throw new ObjectNotFoundException("No pickaxe found");
     	}
 	}
 	
 	@Override
 	public void execute() {
 		if (PlayerUtils.isIdle()) {
-			GameObject rock = LocationUtils.getMineNearestWithin(this.area, this.ore);
+			GameObject rock = LocationUtils.getMineNearestWithin2(this.area, this.ore);
 			if (rock==null) {
 				Logger.pause("Unable to find " + rock + ". Waiting.") ;
 				ThreadUtils.sleepFor(1000, 5000);
 			} else if (rock.isVisible() && LocationUtils.isNearby(rock)) {
 				if (GameActions.mine(rock)) {
-					RestManager.get(PlayerUtils.name()).rest(State.OCCUPIED);
+					RestManager.get(PlayerUtils.name()).rest(State.DISTRACTED);
 				}
 			} else {
 				LocationActions.shortWalkTo(rock);

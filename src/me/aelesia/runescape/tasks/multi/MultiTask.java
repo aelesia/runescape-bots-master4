@@ -25,6 +25,14 @@ public abstract class MultiTask extends BaseTask {
 	}
 	
 	@Override
+	public final void exit() {
+		this.state = startState();
+		for (BaseTask task : this.taskMap.values()) {
+		    task.exit();
+		}
+	}
+	
+	@Override
 	public final void validate() {
 		this.taskMap.get(state).validate();
 	}
@@ -35,6 +43,7 @@ public abstract class MultiTask extends BaseTask {
 		skip=false;
 		String changeState = this.taskMap.get(state).changeState(); 
 		if (changeState != null) {
+			this.taskMap.get(this.state).exit();
 			this.state = changeState;
 			skip = true;
 		}

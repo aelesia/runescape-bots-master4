@@ -28,7 +28,7 @@ public class Category {
 	
 	public final static String[] AXE = {E.Item.BRONZE_AXE, E.Item.MITHRIL_AXE, E.Item.RUNE_AXE};
 	
-	public final static String[] PICKAXE = {E.Item.BRONZE_PICKAXE, E.Item.ADAMANT_PICKAXE, E.Item.BRONZE_PICKAXE};
+	public final static String[] PICKAXE = {E.Item.BRONZE_PICKAXE, E.Item.ADAMANT_PICKAXE, E.Item.BRONZE_PICKAXE, E.Item.RUNE_PICKAXE};
 	
 	public final static String[] GAME_OBJECT = {E.Object.TREE, E.Object.OAK, E.Object.BOULDER, E.Object.TREE_STUMP, E.Object.FIRE, E.Object.PLANT, E.Object.BUSH};
 }

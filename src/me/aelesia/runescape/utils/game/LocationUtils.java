@@ -1,6 +1,7 @@
 package me.aelesia.runescape.utils.game;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -121,6 +122,37 @@ public class LocationUtils {
 			return (!target.getDefinition().getColorSubstitutions().isEmpty()
 					&& oreList.contains(target.getDefinition().getColorSubstitutions().get(E.Ore.EMPTY)));
 		}).results().nearest();
+	}
+	
+	public static GameObject getMineNearestWithin2(Area area, Color ...ore) {
+		GameObject o;
+		o = GameObjects.newQuery().names(E.Object.ROCKS).actions(E.Action.MINE).within(area).filter(target -> {
+			List<Color> oreList = Arrays.asList(ore);
+			return (!target.getDefinition().getColorSubstitutions().isEmpty()
+					&& oreList.contains(target.getDefinition().getColorSubstitutions().get(E.Ore.EMPTY))
+					&& noPlayerBeside(target));
+		}).results().nearest();
+		if (o==null) {
+			o = GameObjects.newQuery().names(E.Object.ROCKS).actions(E.Action.MINE).within(area).filter(target -> {
+				List<Color> oreList = Arrays.asList(ore);
+				return (!target.getDefinition().getColorSubstitutions().isEmpty()
+						&& oreList.contains(target.getDefinition().getColorSubstitutions().get(E.Ore.EMPTY)));
+			}).results().nearest();
+		}
+		return o;
+	}
+	
+	public static boolean noPlayerBeside(Locatable l) {
+		Coordinate pos = l.getPosition();
+		List<Coordinate> surroundingCoordinates = new ArrayList<Coordinate>();
+		surroundingCoordinates.add(pos.derive(0, 1));
+		surroundingCoordinates.add(pos.derive(0, -1));
+		surroundingCoordinates.add(pos.derive(1, 0));
+		surroundingCoordinates.add(pos.derive(-1, 0));
+		
+		return Players.newQuery().filter(target -> {
+			return(!target.equals(Players.getLocal()) && (surroundingCoordinates.contains(target.getPosition())));
+		}).results().isEmpty();
 	}
 	
 	public static GameObject getMineNearestAroundMe(int radius, Color ore) {

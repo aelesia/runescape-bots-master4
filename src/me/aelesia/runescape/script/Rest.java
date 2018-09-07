@@ -85,7 +85,7 @@ public class Rest {
 			} else if (State.OCCUPIED.equals(state)) {
 				remainderOccupied -= timeBlock;
 			} else if (State.AWAY.equals(state)) {
-				timeBlock = RandomUtils.randomInt(1*60, 4*60);
+				timeBlock = RandomUtils.randomInt(1*60, 3*60);
 				remainderAway -= timeBlock;
 			} else {
 				remainderActive -= timeBlock;
@@ -138,7 +138,7 @@ public class Rest {
 			willAway = true;
 			awayFor = (timeList.get(0) - currentTime()) * 1000;
 			if (awayFor < 0) {
-				awayFor = RandomUtils.randomInt(1*60, 4*60) * 1000;
+				awayFor = RandomUtils.randomInt(1*60, 3*60) * 1000;
 			}
 		}
 		if (State.AWAY.equals(state) && willAway) {
@@ -183,6 +183,13 @@ public class Rest {
 			willAway = false;
 		}
 //		}
+	}
+	
+	public void exit() {
+		int endTime = timeList.get(timeList.size()-1);
+		if (currentTime() > endTime) {
+			throw new OutOfTimeException("Bot finished running for " + bottingDuration/60 + " minutes");
+		}
 	}
 	
 	private int currentTime() {

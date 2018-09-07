@@ -1,5 +1,8 @@
 package me.aelesia.runescape.script.debug;
 
+import java.util.List;
+
+import com.runemate.game.api.hybrid.entities.GameObject;
 import com.runemate.game.api.hybrid.entities.GroundItem;
 import com.runemate.game.api.hybrid.location.Coordinate;
 import com.runemate.game.api.hybrid.region.Players;
@@ -44,8 +47,10 @@ public class DebugBot extends LoopingBot {
 			lastAnimationId = animationId;
 		}
 		
-		System.out.println(LocationUtils.isWithin(Zones.DRAYNOR_OAKS_2.area));
-		
+//		List<GameObject> list = LocationUtils.getGameObjectsAroundMe(1);
+//		for (GameObject obj : list) {
+//			System.out.println(obj + " , " + obj.getType());
+//		}
 //		while (Inventory.contains(E.Item.BONES)) {
 //			SpriteItem bones = Inventory.getItems(E.Item.BONES).first();
 //			InventoryActions.interact(E.Action.BURY, bones);

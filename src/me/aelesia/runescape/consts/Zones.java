@@ -19,6 +19,10 @@ public class Zones {
 //	public static Zone DRAYNOR_OAKS_2_EMPTY = new Zone("DRAYNOR_OAKS_2_EMPTY", new Area.Rectangular(new Coordinate(3099, 3284, 0), new Coordinate(3104, 3282, 0)));
 
 	public static Zone BANK_DRAYNOR = new Zone("BANK_DRAYNOR", new Area.Rectangular(new Coordinate(3092, 3245, 0), new Coordinate(3095, 3241, 0)));
+	public static Zone BANK_VARROCK_EAST = new Zone("BANK_VARROCK_EAST", new Area.Rectangular(new Coordinate(3251, 3422, 0), new Coordinate(3254, 3420, 0)));
+	public static Zone BANK_VARROCK_WEST = new Zone("BANK_VARROCK_WEST", new Area.Rectangular(new Coordinate(3185, 3435, 0), new Coordinate(3181, 3445, 0)));
+
+	public static Zone MINE_VARROCK_EAST = new Zone("MINE_VARROCK_EAST", new Area.Rectangular(new Coordinate(3285, 3370, 0), new Coordinate(3288, 3368, 0)));
 	
 	public static List<Zone> ALL = new ArrayList<Zone>() {{
 		add(LUMBRIDGE_GOBLIN_HUT);

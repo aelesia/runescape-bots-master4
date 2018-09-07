@@ -8,7 +8,6 @@ public abstract class BankDepositDefault extends BankDepositTask {
 
 	public BankDepositDefault(String[] itemsToDeposit) {
 		super(itemsToDeposit);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

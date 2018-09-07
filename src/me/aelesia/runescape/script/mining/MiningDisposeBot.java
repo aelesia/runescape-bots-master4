@@ -7,7 +7,7 @@ import me.aelesia.runescape.tasks.base.MiningTask;
 import me.aelesia.runescape.tasks.general.DisposeDefault;
 import me.aelesia.runescape.utils.game.Logger;
 
-public abstract class MiningDisposeBase extends StateBot {
+public abstract class MiningDisposeBot extends StateBot {
 	
 	
 	class State {

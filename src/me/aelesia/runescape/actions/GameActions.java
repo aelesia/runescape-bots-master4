@@ -93,16 +93,17 @@ public class GameActions {
 	}
 	
 	public static boolean mine(GameObject rock) {
-		rock.interact(E.Action.MINE);
-		Logger.action("Interacting with rock");
-		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
-			Execution.delayUntil(()->!PlayerUtils.isMoving());
-			Logger.success("Arrived at rock");
-		}
-		if (Execution.delayUntil(()->PlayerUtils.isMining(), 1000)) {
-			Logger.success("Mining rock");
-			Execution.delayUntil(()->!PlayerUtils.isMining());
-			return true;
+		if (rock.interact(E.Action.MINE)) {
+			Logger.action("Interacting with rock");
+			if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
+				Execution.delayUntil(()->!PlayerUtils.isMoving());
+				Logger.success("Arrived at rock");
+			}
+			if (Execution.delayUntil(()->PlayerUtils.isMining(), 1000)) {
+				Logger.success("Mining rock");
+				Execution.delayUntil(()->!PlayerUtils.isMining());
+				return true;
+			}
 		}
 		return false;
 	}

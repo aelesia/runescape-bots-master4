@@ -37,6 +37,7 @@ public class TutorialController implements Initializable {
 			int maxTime = Integer.parseInt(maxTimeTxt.getText());
 			config.bottingDuration = RandomUtils.randomInt(minTime*60, maxTime*60);
 			config.ready = true;
+			startBtn.setDisable(true);
 		};
 	}
 

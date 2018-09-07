@@ -1,6 +1,7 @@
 package me.aelesia.runescape.script;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,14 +22,16 @@ import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.utils.general.ThreadUtils;
 import me.aelesia.runescape.exceptions.IllegalStateException;
+import me.aelesia.runescape.exceptions.OutOfTimeException;
 
 
 public abstract class StateBot extends LoopingBot implements EmbeddableUI {
 	
 	protected Map<String, BaseTask> taskMap = new HashMap<String, BaseTask>();
 	
-	protected String state = null;
+	private String state = null;
 	private String previousState = null;
+	private LocalDateTime stateStartTime;
 	private int iterations = 0;
 	Rest rest;
 	protected Config config = new Config();
@@ -49,7 +52,7 @@ public abstract class StateBot extends LoopingBot implements EmbeddableUI {
     	RestManager.createNew(Players.getLocal().getName(), config.bottingDuration);
     	this.initialize();
     	this.registerTasks();
-    	this.state = startingState();
+    	setState(startingState());
     	this.setLoopDelay(50, 100);
     }
  
@@ -74,6 +77,9 @@ public abstract class StateBot extends LoopingBot implements EmbeddableUI {
 	    	taskMap.get(state).validate();
 	    	
 	    	String changeState = taskMap.get(state).changeState(); 
+	    	
+	    	this.stateTimeout(10);
+	    	
 	    	if (changeState == null) {
 	    		taskMap.get(state).execute();
 	    	} else if ("REVERT".equals(changeState)) { 
@@ -88,6 +94,8 @@ public abstract class StateBot extends LoopingBot implements EmbeddableUI {
 	    		RestManager.get(PlayerUtils.name()).away();
 	    	}
 	    	
+	    	RestManager.get(PlayerUtils.name()).exit();
+	    	
     	} catch (RunescapeBotException e) {
     		e.printStackTrace();
     		this.stop(e.getMessage());
@@ -99,11 +107,19 @@ public abstract class StateBot extends LoopingBot implements EmbeddableUI {
 		previousState = state;
 		state = newState;
 		iterations = 0;
+		stateStartTime = LocalDateTime.now();
 	}
 	
 	private void revertState() {
 		setState(previousState);
 		iterations = 2;
+	}
+	
+	public void stateTimeout(int mins) {
+    	if (stateStartTime.plusMinutes(mins).compareTo(LocalDateTime.now()) <= 0) {
+    		throw new OutOfTimeException("State running for more than " + mins + " mins");
+    	}
+    	
 	}
 
 	@Override

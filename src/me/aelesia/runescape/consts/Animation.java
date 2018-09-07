@@ -9,7 +9,7 @@ public class Animation {
 
 	public static List<Integer> FISHING = Arrays.asList(621, 623);
 	
-	public static List<Integer> MINING = Arrays.asList(625, 628);
+	public static List<Integer> MINING = Arrays.asList(624, 625, 628);
 	
 	public static List<Integer> CHOPPING = Arrays.asList(867, 871, 879);
 	

@@ -76,7 +76,15 @@ public abstract class TravelTask extends BaseTask {
 				}
 			}
 		} else {
-			LocationActions.traverseTo(emptyC);
+			try {
+				LocationActions.traverseTo(emptyC);
+			} catch (OutOfBoundsException e) {
+				retryCount++;
+				emptyC = null;
+				if (retryCount >= 10) {
+					throw new OutOfBoundsException("Unable to find path to " + c);
+				}
+			}
 		}
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
 			Execution.delayUntil(()->!PlayerUtils.isMoving(), 1000);

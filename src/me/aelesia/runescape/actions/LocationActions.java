@@ -30,7 +30,7 @@ public class LocationActions {
         if (p == null) {
         	throw new OutOfBoundsException("[ERROR] No valid path");
         }
-        Logger.action("Walking to destination");
+        Logger.action("Traversing to destination");
         p.step();
         if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
         	Execution.delayUntil(()->!PlayerUtils.isMoving());
@@ -40,7 +40,7 @@ public class LocationActions {
 	
 	public static void walkHere(Coordinate c) {
 		c.interact(E.Action.WALK_HERE);
-        Logger.action("Walking to destination");
+        Logger.action("WALK HERE to destination");
         Execution.delay(1000);
         Execution.delayUntil(()->PlayerUtils.isIdle(), 10000);
         Logger.success("Arrived at destination");

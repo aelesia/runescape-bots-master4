@@ -3,11 +3,11 @@ package me.aelesia.runescape.script;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import me.aelesia.runescape.utils.general.RandomUtils;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import me.aelesia.runescape.utils.general.RandomUtils;
 
 public class TutorialController implements Initializable {
 

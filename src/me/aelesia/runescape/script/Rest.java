@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.aelesia.runescape.utils.general.RandomUtils;
 import me.aelesia.runescape.exceptions.OutOfTimeException;
 import me.aelesia.runescape.utils.game.Logger;
-import me.aelesia.runescape.utils.general.RandomUtils;
 import me.aelesia.runescape.utils.general.ThreadUtils;
 
 public class Rest {

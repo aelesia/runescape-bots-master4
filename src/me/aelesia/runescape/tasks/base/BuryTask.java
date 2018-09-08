@@ -47,6 +47,8 @@ public abstract class BuryTask extends BaseTask {
 					retryCount = 0;
 				}
 			}
+		} else {
+			this.initialize();
 		}
 	}
 }

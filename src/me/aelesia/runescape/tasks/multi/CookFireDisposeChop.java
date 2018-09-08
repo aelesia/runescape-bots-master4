@@ -3,13 +3,13 @@ package me.aelesia.runescape.tasks.multi;
 import com.runemate.game.api.hybrid.local.hud.interfaces.Inventory;
 import com.runemate.game.api.hybrid.location.Area;
 
+import me.aelesia.runescape.utils.general.RandomUtils;
 import me.aelesia.runescape.consts.Category;
 import me.aelesia.runescape.tasks.base.ChopTask;
 import me.aelesia.runescape.tasks.base.DisposeTask;
 import me.aelesia.runescape.utils.game.InventoryUtils;
 import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.Logger;
-import me.aelesia.runescape.utils.general.RandomUtils;
 
 public abstract class CookFireDisposeChop extends MultiTask {
 	

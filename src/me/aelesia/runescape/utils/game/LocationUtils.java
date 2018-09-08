@@ -18,8 +18,8 @@ import com.runemate.game.api.hybrid.region.GroundItems;
 import com.runemate.game.api.hybrid.region.Npcs;
 import com.runemate.game.api.hybrid.region.Players;
 
-import me.aelesia.runescape.consts.E;
 import me.aelesia.runescape.utils.general.RandomUtils;
+import me.aelesia.runescape.consts.E;
 
 
 public class LocationUtils {

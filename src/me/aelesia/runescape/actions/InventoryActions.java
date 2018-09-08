@@ -100,10 +100,11 @@ public class InventoryActions {
     	
 		int initialSize = Inventory.getQuantity(item.getDefinition().getName());
 		Logger.action(action + item);
-		item.interact(action);
-		if (Execution.delayUntil(()->(Inventory.getQuantity(item.getDefinition().getName())!=initialSize), 2000)) {
-			Logger.success(action + item);
-			return true;
+		if (item.interact(action)) {
+			if (Execution.delayUntil(()->(Inventory.getQuantity(item.getDefinition().getName())!=initialSize), 3000)) {
+				Logger.success(action + item);
+				return true;
+			}
 		}
 		return false;
 	}

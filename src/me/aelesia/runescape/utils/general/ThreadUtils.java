@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import me.aelesia.runescape.utils.general.RandomUtils;
+
 public class ThreadUtils {
 	
 	/** 

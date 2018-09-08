@@ -20,6 +20,7 @@ public abstract class StartFireTask extends BaseTask {
 
 	protected Area area;
 	protected String[] logsToBurn;
+	protected int numLogsBurned;
 	
 	public StartFireTask(String[] logsToBurn) {
 		if (CommonUtils.isEmpty(logsToBurn)) {
@@ -32,6 +33,11 @@ public abstract class StartFireTask extends BaseTask {
 //		this.area = area;
 //		this.logsToBurn = logsToBurn;
 //	}
+	
+	@Override
+	public void initialize() {
+		numLogsBurned=0;
+	}
 	
 	@Override
 	public void validate() {
@@ -52,9 +58,14 @@ public abstract class StartFireTask extends BaseTask {
 	    		}
 			} else {
 				if (GameActions.startFire(logsToBurn)) {
+					numLogsBurned++;
 					RestManager.get(PlayerUtils.name()).rest(State.DISTRACTED);
 				}
 			}
 		}
+	}
+	
+	public int numLogsBurned() {
+		return this.numLogsBurned;
 	}
 }

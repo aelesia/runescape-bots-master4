@@ -8,16 +8,17 @@ import com.runemate.game.api.hybrid.entities.GameObject;
 import com.runemate.game.api.hybrid.entities.GameObject.Type;
 import com.runemate.game.api.hybrid.location.Area;
 import com.runemate.game.api.hybrid.location.Coordinate;
+import com.runemate.game.api.hybrid.location.navigation.Traversal;
 import com.runemate.game.api.hybrid.region.GameObjects;
 import com.runemate.game.api.hybrid.region.Players;
 import com.runemate.game.api.script.Execution;
 
+import me.aelesia.runescape.utils.general.RandomUtils;
 import me.aelesia.runescape.actions.LocationActions;
 import me.aelesia.runescape.exceptions.OutOfBoundsException;
 import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.utils.game.Zone;
-import me.aelesia.runescape.utils.general.RandomUtils;
 
 public abstract class TravelTask extends BaseTask {
 
@@ -87,7 +88,12 @@ public abstract class TravelTask extends BaseTask {
 			}
 		}
 		if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
-			Execution.delayUntil(()->!PlayerUtils.isMoving(), 1000);
+			if (Traversal.isRunEnabled()) {
+				Execution.delayUntil(()->!PlayerUtils.isMoving(), 500, 1000);	
+			} else {
+				Execution.delayUntil(()->!PlayerUtils.isMoving(), 1000, 2000);
+			}
+			
 		}
 	}
 }

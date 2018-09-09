@@ -16,34 +16,39 @@ import me.aelesia.runescape.utils.game.PlayerUtils;
 
 public class LocationActions {
 	
-	public static void shortWalkTo(LocatableEntity locatable) {
+	public static boolean shortWalkTo(LocatableEntity locatable) {
         Path p = BresenhamPath.buildTo(locatable);
-        shortWalkTo(p);
+        return shortWalkTo(p);
 	}
 	
-	public static void shortWalkTo(Coordinate c) {
+	public static boolean shortWalkTo(Coordinate c) {
         Path p = BresenhamPath.buildTo(c);
-		shortWalkTo(p);
+		return shortWalkTo(p);
 	}
 	
-	private static void shortWalkTo(Path p) {
+	private static boolean shortWalkTo(Path p) {
         if (p == null) {
         	throw new OutOfBoundsException("[ERROR] No valid path");
         }
-        Logger.action("Traversing to destination");
+        Logger.action("Walking to destination");
         p.step();
         if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
         	Execution.delayUntil(()->!PlayerUtils.isMoving());
         	Logger.success("Arrived at destination");
+        	return true;
 		}
+        return false;
 	}
 	
-	public static void walkHere(Coordinate c) {
+	public static boolean walkHere(Coordinate c) {
 		c.interact(E.Action.WALK_HERE);
         Logger.action("WALK HERE to destination");
-        Execution.delay(1000);
-        Execution.delayUntil(()->PlayerUtils.isIdle(), 10000);
-        Logger.success("Arrived at destination");
+        if (Execution.delayUntil(()->PlayerUtils.isMoving(), 1000)) {
+        	Execution.delayUntil(()->!PlayerUtils.isMoving());
+        	Logger.success("Arrived at destination");
+        	return true;
+        }
+        return false;
 	}
 	
 	public static void traverseTo(Coordinate c) {

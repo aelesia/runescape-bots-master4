@@ -37,14 +37,15 @@ public abstract class BankDepositTask extends BaseTask {
 	}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		SpriteItem item = Inventory.getItems(itemsToDeposit).first();
 		if (item!=null) {
 			if (!Bank.isOpen()) {
-				GameActions.openBank();
+				return GameActions.openBank();
 			} else {
-				GameActions.depositAll(item);
+				return GameActions.depositAll(item);
 			}
 		}
+		return false;
 	}
 }

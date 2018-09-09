@@ -18,9 +18,12 @@ import com.runemate.game.api.hybrid.util.Resources;
 import com.runemate.game.api.script.framework.LoopingBot;
 import me.aelesia.runescape.exceptions.RunescapeBotException;
 import me.aelesia.runescape.tasks.base.BaseTask;
+import me.aelesia.runescape.utils.game.LocationUtils;
 import me.aelesia.runescape.utils.game.Logger;
 import me.aelesia.runescape.utils.game.PlayerUtils;
 import me.aelesia.runescape.utils.general.ThreadUtils;
+import me.aelesia.runescape.actions.InventoryActions;
+import me.aelesia.runescape.actions.LocationActions;
 import me.aelesia.runescape.exceptions.IllegalStateException;
 import me.aelesia.runescape.exceptions.OutOfTimeException;
 
@@ -36,6 +39,8 @@ public abstract class StateBot extends LoopingBot implements EmbeddableUI {
 	Rest rest;
 	protected Config config = new Config();
 //	private static boolean stateChanged = false;
+	
+	int failCounter;
 	
 	public StateBot() {
     	setEmbeddableUI(this);
@@ -72,6 +77,7 @@ public abstract class StateBot extends LoopingBot implements EmbeddableUI {
     		
 	    	if (iterations==1) {
 	    		taskMap.get(state).initialize();
+	    		failCounter = 0;
 	    	}
     	
 	    	taskMap.get(state).validate();
@@ -81,7 +87,16 @@ public abstract class StateBot extends LoopingBot implements EmbeddableUI {
 	    	this.stateTimeout(10);
 	    	
 	    	if (changeState == null) {
-	    		taskMap.get(state).execute();
+	    		if (taskMap.get(state).execute()) {
+	    			failCounter = 0;
+	    		} else {
+	    			failCounter++;
+	    			Logger.info("Fail count: " + failCounter);
+	    			if (failCounter>=15) {
+		    			Logger.info("Execution failed more than 15 times. Reseting state");
+		    			setState(startingState());
+		    		}
+	    		}	    		
 	    	} else if ("REVERT".equals(changeState)) { 
 	    		taskMap.get(state).exit();
 	    		revertState();
@@ -101,9 +116,14 @@ public abstract class StateBot extends LoopingBot implements EmbeddableUI {
     		this.stop(e.getMessage());
 		}
     }
+    
+    private void reset() {
+    	InventoryActions.close();
+    	LocationActions.walkHere(LocationUtils.getEmptySpaceBesideMe());
+    }
 	
 	private void setState(String newState) {
-		Logger.stateChange(state + "->" + newState);
+		Logger.stateChange(state, state + "->" + newState);
 		previousState = state;
 		state = newState;
 		iterations = 0;

@@ -7,13 +7,15 @@ import com.runemate.game.api.hybrid.region.Players;
 
 public class Logger {
 	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+	private static String state;
 	
 	public static void state(String msg) {
 		println("[STATE] " + msg);
 	}
 	
-	public static void stateChange(String msg) {
+	public static void stateChange(String state, String msg) {
 		println("***** " + msg + " *****");
+		Logger.state = state;
 	}
 	
 	public static void success(String msg) {
@@ -45,6 +47,6 @@ public class Logger {
 	}
 	
 	public static void println(String msg) {
-		System.out.println("["+dtf.format(LocalDateTime.now())+"]["+Players.getLocal().getName()+"]"+msg);
+		System.out.println("["+dtf.format(LocalDateTime.now())+"]["+Players.getLocal().getName()+"]["+Logger.state+"]"+msg);
 	}
 }

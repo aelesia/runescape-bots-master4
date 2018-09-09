@@ -24,9 +24,10 @@ public abstract class DisposeTask extends BaseTask {
 	}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (InventoryUtils.contains(itemsToDispose)) {
 			InventoryActions.disposeAll(itemsToDispose);
 		}
+		return true;
 	}
 }

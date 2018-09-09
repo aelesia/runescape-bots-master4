@@ -44,9 +44,10 @@ public abstract class ShortTravelTask extends BaseTask {
 	}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (PlayerUtils.isIdle()) {
-			LocationActions.shortWalkTo(coordinate);
+			return LocationActions.shortWalkTo(coordinate);
 		}
+		return false;
 	}
 }

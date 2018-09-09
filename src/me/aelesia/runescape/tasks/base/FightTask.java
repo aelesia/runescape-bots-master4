@@ -33,7 +33,7 @@ public abstract class FightTask extends BaseTask {
 	}
 
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (!PlayerUtils.isMoving()) {
 //			Npc target = LocationUtils.getMonsterNearestAroundMe(7, monstersToKill);
 //			if (target==null) {
@@ -49,15 +49,17 @@ public abstract class FightTask extends BaseTask {
 				ThreadUtils.sleepFor(1000, 5000);
 			} else {
 				if (!target.isVisible()) {
-					LocationActions.shortWalkTo(target);
+					return LocationActions.shortWalkTo(target);
 				}
 				if (GameActions.attack(target)) {
 					killCount++;
 					Logger.info("killCount: " + killCount);
 					RestManager.get(PlayerUtils.name()).rest(State.OCCUPIED);
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 
 	public int killCount() {

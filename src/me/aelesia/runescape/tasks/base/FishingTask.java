@@ -44,16 +44,18 @@ public abstract class FishingTask extends BaseTask {
 	}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (PlayerUtils.isIdle()) {
 			Npc fishingSpotObj = LocationUtils.getNpcNearest(this.fishingSpot);
 			if (fishingSpotObj.isVisible()) {
 				if (GameActions.fish(fishingSpotObj, action)) {
 					RestManager.get(PlayerUtils.name()).rest(State.OCCUPIED);
+					return true;
 				}
     		} else {
-    			LocationActions.shortWalkTo(fishingSpotObj);
+    			return LocationActions.shortWalkTo(fishingSpotObj);
     		}
 		}
+		return false;
 	}
 }

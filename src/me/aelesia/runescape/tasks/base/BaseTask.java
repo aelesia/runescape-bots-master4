@@ -15,5 +15,5 @@ public abstract class BaseTask {
 	
 	public abstract String changeState();
 
-	public abstract void execute();
+	public abstract boolean execute();
 }

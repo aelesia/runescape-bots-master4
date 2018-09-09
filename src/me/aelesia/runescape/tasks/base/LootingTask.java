@@ -32,16 +32,18 @@ public abstract class LootingTask extends BaseTask {
 	}
 
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (PlayerUtils.isIdle()) {
 			GroundItem item = LootingTask.getAdjacentLoot(this.itemsToLoot);
 
 			if (item!=null && item.isValid()) {
 				if (GameActions.loot(item)) {
 					itemsPickedUp++;
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 	
 	public static GroundItem getAdjacentLoot(String ...itemsToLoot) {

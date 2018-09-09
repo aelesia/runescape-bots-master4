@@ -54,10 +54,11 @@ public abstract class MultiTask extends BaseTask {
 	}
 	
 	@Override
-	public final void execute() {
+	public final boolean execute() {
 		if (!skip) {
-			this.taskMap.get(state).execute();
+			return this.taskMap.get(state).execute();
 		}
+		return true;
 	}
 	
 

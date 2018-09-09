@@ -38,7 +38,7 @@ public abstract class MiningTask extends BaseTask {
 	}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (PlayerUtils.isIdle()) {
 			GameObject rock = LocationUtils.getMineNearestWithin2(this.area, this.ore);
 			if (rock==null) {
@@ -47,10 +47,12 @@ public abstract class MiningTask extends BaseTask {
 			} else if (rock.isVisible() && LocationUtils.isNearby(rock)) {
 				if (GameActions.mine(rock)) {
 					RestManager.get(PlayerUtils.name()).rest(State.DISTRACTED);
+					return true;
 				}
 			} else {
-				LocationActions.shortWalkTo(rock);
+				return LocationActions.shortWalkTo(rock);
 			}
 		}
+		return false;
 	}
 }

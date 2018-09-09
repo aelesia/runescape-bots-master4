@@ -25,14 +25,16 @@ public abstract class CookTask extends BaseTask {
 	public void validate() {}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (PlayerUtils.isIdle()) {
 			GameObject fire = LocationUtils.getGameObjectNearestVisibleAroundMe(1, E.Object.FIRE);
 			if (fire != null) {
 				if (GameActions.cookFood(fire, itemsToCook)) {
 					RestManager.get(PlayerUtils.name()).rest(State.DISTRACTED);
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 }

@@ -187,7 +187,7 @@ public class LocationUtils {
 //		return (LocationUtils.getNpcsNearestVisible(action, names) != null);
 //	}
 	
-	public static Coordinate getEmptySpaceAroundMe() {
+	public static Coordinate getEmptySpaceBesideMe() {
 		List<Coordinate> emptySpaces = getEmptySpacesAroundMe(1);
     	Coordinate emptySpace = emptySpaces.get(RandomUtils.randomInt(0, emptySpaces.size()-1));
     	return emptySpace;

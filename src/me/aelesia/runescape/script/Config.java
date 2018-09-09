@@ -35,7 +35,11 @@ public class Config {
 		str+="bottingDuration: " + bottingDuration;
 		if (zone!=null) {
 			str+= "zone: " + zone.name + "\n";
-		} if (bank!=null) {
+		} 
+		if (emptyZone!=null) {
+			str+= "emptyZone: " + emptyZone.name + "\n";
+		} 
+		if (bank!=null) {
 			str+= "bank: " + bank.name + "\n";
 		}
 		str+= "monstersToFight: " + Arrays.toString(monstersToFight) + "\n";

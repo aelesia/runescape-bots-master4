@@ -45,7 +45,7 @@ public abstract class ChopTask extends BaseTask {
 	}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (PlayerUtils.isIdle()) {
 			GameObject tree = LocationUtils.getGameObjectNearestWithin(this.area, treesToChop);
 			if (tree==null) {
@@ -54,10 +54,12 @@ public abstract class ChopTask extends BaseTask {
 			} else if (tree.isVisible() && LocationUtils.isNearby(tree)) {
 				if (GameActions.chop(tree)) {
 					RestManager.get(PlayerUtils.name()).rest(State.OCCUPIED);
+					return true;
 				}
 			} else {
-				LocationActions.shortWalkTo(tree);
+				return LocationActions.shortWalkTo(tree);
 			}
 		}
+		return false;
 	}
 }

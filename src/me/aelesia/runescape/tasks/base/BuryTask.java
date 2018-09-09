@@ -15,7 +15,6 @@ public abstract class BuryTask extends BaseTask {
 	
 	protected String[] bonesToBury;
 	private List<SpriteItem> bonesInInventory;
-	int retryCount = 0;
 	
 	public BuryTask(String[] bonesToBury) {
 		if (CommonUtils.isEmpty(bonesToBury)) {
@@ -34,21 +33,21 @@ public abstract class BuryTask extends BaseTask {
 	}
 	
 	@Override
-	public void execute() {
+	public void exit() {
+		InventoryActions.close();
+	}
+	
+	@Override
+	public boolean execute() {
 		if (!this.bonesInInventory.isEmpty()) {
 			SpriteItem bone = this.bonesInInventory.get(0);
 			if (InventoryActions.interact(E.Action.BURY, bone)) {
 				this.bonesInInventory.remove(bone);
-				retryCount = 0;
-			} else {
-				retryCount++;
-				if (retryCount>=3) {
-					this.bonesInInventory.remove(bone);
-					retryCount = 0;
-				}
+				return true;
 			}
 		} else {
 			this.initialize();
 		}
+		return false;
 	}
 }

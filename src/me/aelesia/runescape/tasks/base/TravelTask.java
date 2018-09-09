@@ -55,7 +55,7 @@ public abstract class TravelTask extends BaseTask {
 	public void validate() {}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		List<GameObject> potentialBlockers = GameObjects.newQuery().types(Type.PRIMARY, Type.BOUNDARY).within(area).results().asList();
 		if (!potentialBlockers.isEmpty() && emptyC == null) {
 			List<Coordinate> emptyArea = area.getCoordinates();
@@ -91,9 +91,10 @@ public abstract class TravelTask extends BaseTask {
 			if (Traversal.isRunEnabled()) {
 				Execution.delayUntil(()->!PlayerUtils.isMoving(), 500, 1000);	
 			} else {
-				Execution.delayUntil(()->!PlayerUtils.isMoving(), 1000, 2000);
+				Execution.delayUntil(()->!PlayerUtils.isMoving(), 2000, 4000);
 			}
-			
+			return true;
 		}
+		return false;
 	}
 }

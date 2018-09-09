@@ -62,10 +62,6 @@ public class WoodcuttingBankingDraynorBot2 extends StateBot {
     		
 			@Override
 			public String changeState() {
-//				if (!InventoryUtils.contains(config.logsToBurn)) {
-//					Logger.state("No more logs to burn");
-//					return State.CHOPPING;
-//				}
 				if (this.numLogsBurned() >= numLogsToBurn) {
 					Logger.state("Burned " + this.numLogsToBurn + " logs");
 					return State.CHOPPING;

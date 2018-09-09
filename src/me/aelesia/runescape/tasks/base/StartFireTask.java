@@ -47,22 +47,24 @@ public abstract class StartFireTask extends BaseTask {
 	}
 
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (PlayerUtils.isIdle()) {
 			if (LocationUtils.isStandingOnObject()) {
 	    		Logger.info("I'm standing on something");
 	    		if (area!=null) {
-	    			LocationActions.walkHere(LocationUtils.getEmptySpaceAroundMeWithin(this.area));
+	    			return LocationActions.walkHere(LocationUtils.getEmptySpaceAroundMeWithin(this.area));
 	    		} else {
-	    			LocationActions.walkHere(LocationUtils.getEmptySpaceAroundMe());
+	    			return LocationActions.walkHere(LocationUtils.getEmptySpaceBesideMe());
 	    		}
 			} else {
 				if (GameActions.startFire(logsToBurn)) {
 					numLogsBurned++;
 					RestManager.get(PlayerUtils.name()).rest(State.DISTRACTED);
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 	
 	public int numLogsBurned() {

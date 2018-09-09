@@ -202,15 +202,18 @@ public class GameActions {
 		Execution.delayUntil(()->PlayerUtils.isMoving(), 1000);
 	}
 	
-	public static void openBank() {
+	public static boolean openBank() {
 		if (!Bank.isOpen()) {
 			Logger.action("Opening Bank");
-			Bank.open();
-			if (Execution.delayUntil(()->Bank.isOpen(), 5000)) {
-				Logger.success("Bank is open");
-				Execution.delay(1000);
+			if (Bank.open()) {
+				if (Execution.delayUntil(()->Bank.isOpen(), 5000)) {
+					Logger.success("Bank is open");
+					Execution.delay(1000);
+					return true;
+				}
 			}
 		}
+		return false;
 	}
 	
 	public static void closeBank() {
@@ -223,12 +226,15 @@ public class GameActions {
 		}
 	}
 	
-	public static void depositAll(SpriteItem item) {
+	public static boolean depositAll(SpriteItem item) {
 		Logger.action("Depositing all " + item);
-		Bank.deposit(item, 0);
-		if (Execution.delayUntil(()->!item.isValid(), 2000)) {
-			Logger.success("Item deposited");
+		if (Bank.deposit(item, 0)) {
+			if (Execution.delayUntil(()->!item.isValid(), 2000)) {
+				Logger.success("Item deposited");
+				return true;
+			}
 		}
+		return false;
 	}
 	
 //	public static void loot(List<GroundItem> items) {

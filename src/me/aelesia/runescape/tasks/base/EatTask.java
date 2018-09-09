@@ -30,10 +30,11 @@ public abstract class EatTask extends BaseTask {
 	}
 	
 	@Override
-	public void execute() {
+	public boolean execute() {
 		if (this.isBelowHealthThreshold()) {
-			InventoryActions.interact(E.Action.EAT, Inventory.getItems(itemsToEat).first());
+			return InventoryActions.interact(E.Action.EAT, Inventory.getItems(itemsToEat).first());
 		}
+		return false;
 	}
 	
 	public boolean isBelowHealthThreshold() {
